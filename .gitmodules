@@ -1,8 +1,0 @@
-[submodule "libraries/mlx"]
-	path = libraries/mlx
-	url = https://github.com/42Paris/minilibx-linux.git
-
-
-[submodule "mlx"]
-	path = mlx
-	url = https://github.com/42Paris/minilibx-linux.git
