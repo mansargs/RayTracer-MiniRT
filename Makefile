@@ -22,6 +22,11 @@ SRC_DIR     = srcs
 OBJ_DIR     = objects
 LIB_DIR     = libraries
 
+VALIDATION  = $(SRC_DIR)/validation
+VECTOR      = $(SRC_DIR)/vector
+PARSING     = $(SRC_DIR)/parsing
+
+
 LIBFT_DIR   = $(LIB_DIR)/libft
 GNL_DIR     = $(LIB_DIR)/gnl
 MLX_DIR     = $(LIB_DIR)/mlx
@@ -39,8 +44,10 @@ INCS        = -I hdrs \
 #         SOURCE FILES
 # =============================
 SRCS = \
-	$(SRC_DIR)/main.c
-
+	$(SRC_DIR)/main.c \
+	$(VALIDATION)/validation.c \
+	$(VECTOR)/vector.c \
+	
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # =============================
@@ -59,8 +66,8 @@ $(NAME): $(LIBFT) $(GNL) $(MLX) $(OBJS)
 # =============================
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
-	@echo "$(BLUE)[Compiling]$(RESET) $<"
+	@mkdir -p $(dir $@)
+	@echo "$(YELLOW)[Compiling]$(RESET)"
 	@$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 # =============================
