@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 00:39:01 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/10 02:10:00 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/10 04:38:45 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ bool	vector_init(t_vector *vector, size_t elem_size)
 	vector->elem_size = elem_size;
 	vector->data = ft_calloc(vector->capacity, elem_size);
 	if (!vector->data)
+	{
+		ft_putchar_fd("Problem allocating memory\n", STDERR_FILENO);
 		return (false);
+	}
 	return (true);
 }
 

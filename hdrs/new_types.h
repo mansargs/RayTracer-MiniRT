@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/10 01:33:41 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/10 03:04:40 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ typedef struct s_plane
 	t_vec3		normalized;
 	t_rgb		color;
 	t_specular	specular;
+	bool		checkerboard_enabled;
+	char		*texture_path;
+	char		*bump_map_path;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -91,6 +94,9 @@ typedef struct s_cylinder
 	float		height;
 	t_rgb		color;
 	t_specular	specular;
+	bool		checkerboard_enabled;
+	char		*texture_path;
+	char		*bump_map_path;
 }	t_cylinder;
 
 typedef struct s_cone
@@ -101,6 +107,9 @@ typedef struct s_cone
 	float		angle;
 	t_rgb		color;
 	t_specular	specular;
+	bool		checkerboard_enabled;
+	char		*texture_path;
+	char		*bump_map_path;
 }	t_cone;
 
 typedef struct s_scene

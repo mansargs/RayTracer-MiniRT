@@ -6,12 +6,13 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:12:04 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/10 02:18:19 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/10 05:50:59 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "validation.h"
+#include "new_types.h"
 #include <stdbool.h>
 
 static bool	valid_extension(const char *path)
@@ -30,7 +31,7 @@ static bool	valid_extension(const char *path)
 		ft_putendl_fd("Problem with the memory", STDERR_FILENO);
 		return (false);
 	}
-	if (ft_strncmp(last_tree, EXPECTED_EXTENSION, EXTENSION_LENGTH) == 0)
+	if (ft_strcmp(last_tree, EXPECTED_EXTENSION) == 0)
 		return (free(last_tree), true);
 	free(last_tree);
 	ft_putendl_fd("File has invalid extension", STDERR_FILENO);
@@ -61,3 +62,34 @@ bool	is_valid_arguments(int argc, char *argv[])
 	}
 	return (true);
 }
+bool	is_valid_float(const char *str)
+{
+	bool	has_digit;
+
+	has_digit = false;
+	if (!str || !*str)
+		return (false);
+	if (*str == '+' || *str == '-')
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		has_digit = true;
+		str++;
+	}
+	if (*str == '.')
+	{
+		str++;
+		while (*str >= '0' && *str <= '9')
+		{
+			has_digit = true;
+			str++;
+		}
+	}
+	if (!has_digit)
+		return (false);
+	return (*str == '\0');
+}
+
+
+
+
