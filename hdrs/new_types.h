@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/10 03:04:40 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/11 17:17:48 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ typedef struct s_specular
 typedef struct s_ambient
 {
 	float	lighting_ratio;
+	bool	is_set;
 	t_rgb	color;
 }	t_ambient;
 
 typedef struct s_camera
 {
+	bool	is_set;
 	t_vec3	position;
 	t_vec3	orientation;
 	float	fov;

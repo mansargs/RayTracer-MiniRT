@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 02:54:33 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/10 04:44:11 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/11 17:17:14 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 #include "validation.h"
 #include <stdbool.h>
 #include "new_types.h"
+#include"utils.h"
 
 bool	parse_based_on_type(char **attributes, t_scene *scene)
 {
 	if (ft_strcmp(attributes[0], "A") == 0)
-		return (parse_ambient_light(attributes, scene));
+		return (parse_ambient_light(attributes, scene->ambient));
 	else if (ft_strcmp(attributes[0], "C") == 0)
-		return (parse_camera(attributes, scene));
+		return (parse_camera(attributes, scene->camera));
 	else if (ft_strcmp(attributes[0], "L") == 0)
 		return (parse_light(attributes, scene));
 	else if (ft_strcmp(attributes[0], "sp") == 0)
@@ -42,7 +43,9 @@ bool	parse_based_on_type(char **attributes, t_scene *scene)
 bool	parse_line(const char *line, t_scene *scene)
 {
 	char	**attributes;
+	bool	ret_value;
 
+	ret_value = true;
 	if(all_spaces(line))
 		return (true);
 	attributes = ft_split(line, ' ');
@@ -51,8 +54,10 @@ bool	parse_line(const char *line, t_scene *scene)
 		ft_putendl_fd("Problem with the memory", STDERR_FILENO);
 		return (false);
 	}
-
-	return
+	if (!parse_based_on_type(attributes, scene))
+		ret_value = false;
+	free_split(attributes);
+	return (ret_value);
 }
 
 bool	parse_loop(int fd, t_scene *scene)
@@ -67,7 +72,7 @@ bool	parse_loop(int fd, t_scene *scene)
 	}
 	while (line)
 	{
-		if (!parse_line(line))
+		if (!parse_line(line, scene))
 			return (free(line), false);
 		free(line);
 		line = get_next_line(fd);
@@ -87,7 +92,7 @@ bool	parse_file(const char *path, t_scene *scene)
 		ft_putendl_fd("Program can't open file", STDERR_FILENO);
 		return (false);
 	}
-	if (!parse_loop(fd))
+	if (!parse_loop(fd, scene))
 		ret = false;
 	close(fd);
 	return (false);

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 06:48:52 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/10 06:49:49 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/11 16:14:43 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static float	fraction_part(const char *str)
 	return num;
 }
 
-float	ft_stof(const char *str)
+float	ft_atof(const char *str)
 {
 	int		sign;
 	float	num;

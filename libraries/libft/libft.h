@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/10 03:30:33 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/11 16:15:30 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void		*ft_memmove(void *s1, const void *s2, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_atoi(const char *src);
+float		ft_atof(const char *str);
 char		*ft_strnstr(const char *src, const char *to_find, size_t n);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *str);
