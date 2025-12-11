@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 02:54:33 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/11 17:17:14 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/12 02:05:50 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	parse_based_on_type(char **attributes, t_scene *scene)
 	else if (ft_strcmp(attributes[0], "C") == 0)
 		return (parse_camera(attributes, scene->camera));
 	else if (ft_strcmp(attributes[0], "L") == 0)
-		return (parse_light(attributes, scene));
+		return (parse_lights(attributes, scene->lights));
 	else if (ft_strcmp(attributes[0], "sp") == 0)
 		return (parse_sphere(attributes, scene));
 	else if (ft_strcmp(attributes[0], "pl") == 0)

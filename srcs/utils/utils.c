@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 04:41:07 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/12 02:56:55 by mansargs         ###   ########.fr       */
+/*   Created: 2025/12/12 02:49:30 by mansargs          #+#    #+#             */
+/*   Updated: 2025/12/12 02:54:50 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "utils.h"
 
-#include "new_types.h"
+int	count_attributes(char **attributes)
+{
+	int	i;
 
-void	free_split(char **split);
-void	free_scene(t_scene *scene);
-int		count_attributes(char **attributes);
-
-#endif
+	i = -1;
+	while (attributes[++i]);
+	return (i);
+}

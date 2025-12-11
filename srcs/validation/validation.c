@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:12:04 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/11 19:18:50 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/12 03:00:55 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "validation.h"
 #include "new_types.h"
 #include "utils.h"
-#include <stdbool.h>
+#include <math.h>
 
 static bool	valid_extension(const char *path)
 {
@@ -39,7 +39,7 @@ static bool	valid_extension(const char *path)
 	return (false);
 }
 
-static inline bool	out_of_range(float num, float range_min, float range_max)
+bool	out_of_range(float num, float range_min, float range_max)
 {
 	return (num < range_min || num > range_max);
 }
@@ -154,7 +154,13 @@ bool	is_valid_point(const char *str, float range_min, float range_max)
 	return (true);
 }
 
+inline bool	is_normalized_vector(t_vec3 *p)
+{
+	float	len;
 
+	len = sqrtf(p->x * p->x + p->y * p->y + p->z * p->z);
+	return (fabsf(len - 1.0f) < 1e-6);
+}
 
 
 
