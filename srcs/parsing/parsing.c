@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 02:54:33 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/12 23:05:24 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/13 00:52:22 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	parse_based_on_type(char **attributes, t_scene *scene)
 	}
 }
 
-bool	parse_line(const char *line, t_scene *scene)
+bool	parse_line(char *line, t_scene *scene, size_t *len)
 {
 	char	**attributes;
 	bool	ret_value;
@@ -49,6 +49,8 @@ bool	parse_line(const char *line, t_scene *scene)
 	ret_value = true;
 	if(all_spaces(line))
 		return (true);
+	*len = ft_strlen(line);
+	line[*len - 1] = '\0';
 	attributes = ft_split(line, ' ');
 	if (!attributes)
 	{
@@ -64,20 +66,29 @@ bool	parse_line(const char *line, t_scene *scene)
 bool	parse_loop(int fd, t_scene *scene)
 {
 	char	*line;
+	size_t	len;
 
+	len = 0;
 	line = get_next_line(fd);
 	if (!line)
 	{
 		ft_putendl_fd("File is empty", STDERR_FILENO);
 		return (false);
 	}
+	if (!all_spaces(line))
+	{
+		len = ft_strlen(line);
+		line[len - 1] = '\0';
+	}
 	while (line)
 	{
-		if (!parse_line(line, scene))
+		if (!parse_line(line, scene, &len))
 			return (free(line), false);
 		free(line);
 		line = get_next_line(fd);
 	}
+	if (len == 0)
+		return (print_error("The file contains only spaces"), false);
 	return (true);
 }
 
@@ -96,5 +107,11 @@ bool	parse_file(const char *path, t_scene *scene)
 	if (!parse_loop(fd, scene))
 		ret = false;
 	close(fd);
+	if (scene->ambient.is_set == false || scene->camera.is_set == false ||
+		scene->lights.size == 0)
+	{
+		ret = false;
+		print_error("File must have 1 camera, 1 ambient and light(s)");
+	}
 	return (ret);
 }

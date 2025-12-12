@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 05:51:27 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/12 23:11:47 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/13 00:36:03 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ bool	parse_optional_data(char **attributes, t_material *mat, size_t len)
 	size_t	i;
 
 	i = 0;
+	if (!attributes[0])
+		return (true);
 	if (len >= 2)
 	{
 		if (!parse_specular(attributes, &mat->spec))

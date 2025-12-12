@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:27:50 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/12 22:33:34 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/12 23:23:24 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, char *argv[])
 	if (!init_scene(&scene))
 		return (EXIT_FAILURE);
 	if (!parse_file(argv[1], &scene))
+		return (EXIT_FAILURE);
 	free_scene(&scene);
-	return (0);
+	return (EXIT_SUCCESS);
 }
