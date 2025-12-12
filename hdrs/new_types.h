@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/11 17:17:48 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/12 23:12:33 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,15 @@ typedef struct s_vec3
 typedef struct s_specular
 {
 	float	k_s; // 0.0 - 1.0
-	int		n_s; // 1 - 128
+	int		n_s; // 1 - 1000
 }	t_specular;
+
+typedef struct s_material
+{
+	t_specular	spec;
+	char		*texture_path;
+	char		*bump_map_path;
+}	t_material;
 
 typedef struct s_ambient
 {
@@ -71,47 +78,39 @@ typedef struct s_sphere
 	t_vec3		center;
 	float		diameter;
 	t_rgb		color;
-	t_specular	specular;
 	bool		checkerboard_enabled;
-	char		*texture_path;
-	char		*bump_map_path;
+	t_material	mat;
 }	t_sphere;
 
 typedef struct s_plane
 {
 	t_vec3		position;
-	t_vec3		normalized;
+	t_vec3		orientation;
 	t_rgb		color;
-	t_specular	specular;
 	bool		checkerboard_enabled;
-	char		*texture_path;
-	char		*bump_map_path;
+	t_material	mat;
 }	t_plane;
 
 typedef struct s_cylinder
 {
 	t_vec3		center;
-	t_vec3		normalized;
+	t_vec3		orientation;
 	float		diameter;
 	float		height;
 	t_rgb		color;
-	t_specular	specular;
 	bool		checkerboard_enabled;
-	char		*texture_path;
-	char		*bump_map_path;
+	t_material	mat;
 }	t_cylinder;
 
 typedef struct s_cone
 {
 	t_vec3		center;
-	t_vec3		normalized;
+	t_vec3		orientation;
 	float		height;
 	float		angle;
 	t_rgb		color;
-	t_specular	specular;
 	bool		checkerboard_enabled;
-	char		*texture_path;
-	char		*bump_map_path;
+	t_material	mat;
 }	t_cone;
 
 typedef struct s_scene

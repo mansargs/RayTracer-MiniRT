@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:41:07 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/12 02:56:55 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/12 22:59:31 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@
 void	free_split(char **split);
 void	free_scene(t_scene *scene);
 int		count_attributes(char **attributes);
+void	print_error(char *str);
 
 #endif

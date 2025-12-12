@@ -25,7 +25,7 @@ LIB_DIR     = libraries
 VALIDATION  = $(SRC_DIR)/validation
 VECTOR      = $(SRC_DIR)/vector
 PARSING     = $(SRC_DIR)/parsing
-
+UTILS       = $(SRC_DIR)/utils
 
 LIBFT_DIR   = $(LIB_DIR)/libft
 GNL_DIR     = $(LIB_DIR)/gnl
@@ -47,7 +47,10 @@ SRCS = \
 	$(SRC_DIR)/main.c \
 	$(VALIDATION)/validation.c \
 	$(VECTOR)/vector.c \
-	
+	$(UTILS)/free.c $(UTILS)/utils.c \
+	$(PARSING)/parsing.c $(PARSING)/parse_line_by_name.c $(PARSING)/parse_details.c
+
+
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # =============================
@@ -58,7 +61,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(GNL) $(MLX) $(OBJS)
 	@echo "$(CYAN)[Linking]$(RESET) $(NAME)"
-	@$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(MLX)
+	@$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(MLX) -lm
 	@echo "$(GREEN)Build complete ✔$(RESET)"
 
 # =============================
@@ -76,11 +79,11 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 $(LIBFT):
 	@echo "$(MAGENTA)[Building Libft]$(RESET)"
-	@$(MAKE) bonus -C $(LIBFT_DIR) > /dev/null 2>&1
+	@$(MAKE) bonus -C $(LIBFT_DIR)
 
 $(GNL):
 	@echo "$(MAGENTA)[Building GNL]$(RESET)"
-	@$(MAKE) -C $(GNL_DIR) > /dev/null 2>&1
+	@$(MAKE) -C $(GNL_DIR)
 
 $(MLX):
 	@echo "$(MAGENTA)[Building MLX]$(RESET)"
@@ -88,7 +91,7 @@ $(MLX):
 		echo "$(YELLOW)Configuring MLX silently...$(RESET)"; \
 		cd $(MLX_DIR) && ./configure > /dev/null 2>&1; \
 	fi
-	@cd $(MLX_DIR) && $(MAKE) -s > /dev/null 2>&1
+	@cd $(MLX_DIR) && $(MAKE) > /dev/null 2>&1
 
 
 # =============================

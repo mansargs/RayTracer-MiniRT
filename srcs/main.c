@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:27:50 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/10 05:49:25 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/12 22:33:34 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "new_types.h"
 #include "vector.h"
 #include "libft.h"
+#include "utils.h"
+#include "pars.h"
 
 bool	init_scene(t_scene *scene)
 {
@@ -42,7 +44,7 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	if (!init_scene(&scene))
 		return (EXIT_FAILURE);
-	parse_file(argv[1], &scene);
+	if (!parse_file(argv[1], &scene))
 	free_scene(&scene);
 	return (0);
 }

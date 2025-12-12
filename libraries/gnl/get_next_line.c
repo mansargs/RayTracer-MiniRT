@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:18:34 by mansargs          #+#    #+#             */
-/*   Updated: 2025/07/18 17:33:06 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/12 23:10:08 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ char	*read_line(int fd, char *line)
 		if (bytes == 0)
 			break ;
 		buf[bytes] = '\0';
-		line = ft_strjoin(line, buf);
-		if (ft_strchr(line, '\n'))
+		line = ft_gnl_strjoin(line, buf);
+		if (ft_gnl_strchr(line, '\n'))
 			break ;
 	}
 	return (free(buf), line);
@@ -47,11 +47,11 @@ char	*cut_line(char *line)
 	char	*newline_pos;
 	char	*cut;
 
-	newline_pos = ft_strchr(line, '\n');
+	newline_pos = ft_gnl_strchr(line, '\n');
 	if (newline_pos)
-		cut = ft_substr(line, 0, newline_pos - line + 1);
+		cut = ft_gnl_substr(line, 0, newline_pos - line + 1);
 	else
-		cut = ft_substr(line, 0, ft_strlen(line));
+		cut = ft_gnl_substr(line, 0, ft_gnl_strlen(line));
 	if (!cut)
 		return (NULL);
 	return (cut);
@@ -63,11 +63,11 @@ char	*cut_static(char *line)
 	char	*newl;
 	int		len;
 
-	newl = ft_strchr(line, '\n');
+	newl = ft_gnl_strchr(line, '\n');
 	len = newl - line + 1;
 	if (newl)
 	{
-		temp = ft_substr(line, len, ft_strlen(line) - len);
+		temp = ft_gnl_substr(line, len, ft_gnl_strlen(line) - len);
 		clear(&line);
 		line = temp;
 	}

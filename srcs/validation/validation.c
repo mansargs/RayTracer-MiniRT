@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:12:04 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/12 03:00:55 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/12 22:55:16 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,32 @@
 #include "utils.h"
 #include <math.h>
 
-static bool	valid_extension(const char *path)
+bool	valid_extension(const char *path, const char *extension)
 {
-	char	*last_tree;
+	char	*s;
+	size_t	extension_len;
 
-	if (ft_strlen(path) < 3)
+	extension_len = ft_strlen(extension);
+	if (ft_strlen(path) < extension_len)
 	{
 		ft_putendl_fd("File has invalid extension", STDERR_FILENO);
 		return (false);
 	}
-	last_tree = ft_substr(path, ft_strlen(path) - EXTENSION_LENGTH,
-			EXTENSION_LENGTH);
-	if (!last_tree)
+	s = ft_substr(path, ft_strlen(path) - extension_len,
+			extension_len);
+	if (!s)
 	{
 		ft_putendl_fd("Problem with the memory", STDERR_FILENO);
 		return (false);
 	}
-	if (ft_strcmp(last_tree, EXPECTED_EXTENSION) == 0)
-		return (free(last_tree), true);
-	free(last_tree);
+	if (ft_strcmp(s, extension) == 0)
+		return (free(s), true);
+	free(s);
 	ft_putendl_fd("File has invalid extension", STDERR_FILENO);
 	return (false);
 }
 
-bool	out_of_range(float num, float range_min, float range_max)
+inline bool	out_of_range(float num, float range_min, float range_max)
 {
 	return (num < range_min || num > range_max);
 }
@@ -66,7 +68,7 @@ bool	is_valid_arguments(int argc, char *argv[])
 			STDERR_FILENO);
 		return (false);
 	}
-	if (!valid_extension(argv[1]))
+	if (!valid_extension(argv[1], FILE_EXTENSION))
 		return (false);
 	return (true);
 }
@@ -118,7 +120,7 @@ bool	is_valid_rgb(const char *str)
 			if (!ft_isdigit(split[i][j]))
 				return (ft_putendl_fd("Invalid rgb", 2), free_split(split), false);
 		}
-		if (ft_atoi(split[i] > 255))
+		if (ft_atoi(split[i]) > 255)
 			return (ft_putendl_fd("Invalid rgb", 2), free_split(split), false);
 	}
 	free_split(split);
@@ -162,7 +164,18 @@ inline bool	is_normalized_vector(t_vec3 *p)
 	return (fabsf(len - 1.0f) < 1e-6);
 }
 
-
-
+bool	is_valid_integer(const char *str)
+{
+	if (*str == '-' || *str == '+')
+		++str;
+	if (*str == '0' && *(str + 1))
+		return (false);
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (false);
+	}
+	return (true);
+}
 
 

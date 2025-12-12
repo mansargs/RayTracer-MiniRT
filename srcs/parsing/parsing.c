@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 02:54:33 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/12 02:05:50 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/12 23:05:24 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,24 @@
 #include <stdbool.h>
 #include "new_types.h"
 #include"utils.h"
+#include "pars.h"
 
 bool	parse_based_on_type(char **attributes, t_scene *scene)
 {
 	if (ft_strcmp(attributes[0], "A") == 0)
-		return (parse_ambient_light(attributes, scene->ambient));
+		return (parse_ambient_light(attributes, &scene->ambient));
 	else if (ft_strcmp(attributes[0], "C") == 0)
-		return (parse_camera(attributes, scene->camera));
+		return (parse_camera(attributes, &scene->camera));
 	else if (ft_strcmp(attributes[0], "L") == 0)
-		return (parse_lights(attributes, scene->lights));
+		return (parse_lights(attributes, &scene->lights));
 	else if (ft_strcmp(attributes[0], "sp") == 0)
-		return (parse_sphere(attributes, scene));
+		return (parse_spheres(attributes, &scene->spheres));
 	else if (ft_strcmp(attributes[0], "pl") == 0)
-		return (parse_plane(attributes, scene));
+		return (parse_planes(attributes, &scene->planes));
 	else if (ft_strcmp(attributes[0], "cy") == 0)
-		return (parse_cylinder(attributes, scene));
+		return (parse_cylinders(attributes, &scene->cylinders));
 	else if (ft_strcmp(attributes[0], "co") == 0)
-		return (parse_cone(attributes, scene));
+		return (parse_cones(attributes, &scene->cones));
 	else
 	{
 		ft_putendl_fd("Unknown identifier", STDERR_FILENO);
@@ -95,5 +96,5 @@ bool	parse_file(const char *path, t_scene *scene)
 	if (!parse_loop(fd, scene))
 		ret = false;
 	close(fd);
-	return (false);
+	return (ret);
 }

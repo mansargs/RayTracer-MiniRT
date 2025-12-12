@@ -6,13 +6,13 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:18:52 by mansargs          #+#    #+#             */
-/*   Updated: 2025/07/18 17:33:41 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/12 23:08:47 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_gnl_strchr(const char *str, int c)
 {
 	unsigned char	search_char;
 
@@ -20,7 +20,7 @@ char	*ft_strchr(const char *str, int c)
 		return (NULL);
 	search_char = (unsigned char)c;
 	if (search_char == '\0')
-		return ((char *)str + ft_strlen(str));
+		return ((char *)str + ft_gnl_strlen(str));
 	while (*str != '\0')
 	{
 		if (*str == search_char)
@@ -30,7 +30,7 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-size_t	ft_strlen(const char *str)
+size_t	ft_gnl_strlen(const char *str)
 {
 	size_t	i;
 
@@ -40,7 +40,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *line, const char *buf)
+char	*ft_gnl_strjoin(char *line, const char *buf)
 {
 	char	*res;
 	size_t	len1;
@@ -50,8 +50,8 @@ char	*ft_strjoin(char *line, const char *buf)
 	i = -1;
 	if (!line && !buf)
 		return (NULL);
-	len1 = ft_strlen(line);
-	len2 = ft_strlen(buf);
+	len1 = ft_gnl_strlen(line);
+	len2 = ft_gnl_strlen(buf);
 	res = (char *)malloc((len1 + len2 + 1) * sizeof(char));
 	if (!res)
 		return (clear(&line), NULL);
@@ -65,7 +65,7 @@ char	*ft_strjoin(char *line, const char *buf)
 	return (res);
 }
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_gnl_substr(const char *s, unsigned int start, size_t len)
 {
 	size_t	s_len;
 	size_t	i;
@@ -73,7 +73,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	s_len = ft_strlen(s);
+	s_len = ft_gnl_strlen(s);
 	if (start >= s_len)
 		return (NULL);
 	if (len > s_len - start)
