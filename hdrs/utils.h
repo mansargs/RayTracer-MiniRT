@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/11 19:23:35 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 18:06:48 by mansargs         ###   ########.fr       */
+/*   Created: 2025/12/15 18:13:01 by mansargs          #+#    #+#             */
+/*   Updated: 2025/12/15 18:28:53 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#ifndef UTILS_H
+# define UTILS_H
 
 #include "minirt.h"
 
-bool	parse_file(const char *path, t_scene *scene);
-bool	is_valid_arguments(int argc, char *argv[]);
+void	free_scene(t_scene *scene);
+bool	init_scene(t_scene *scene);
+void	print_scene(t_scene *scene);
 
 #endif

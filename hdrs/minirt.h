@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 14:52:03 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 18:20:44 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,14 @@ typedef struct s_vec3
 
 typedef struct s_specular
 {
-	float	k_s; // 0.0 - 1.0
-	int		n_s; // 1 - 1000
+	float	k_s;
+	int		n_s;
 }	t_specular;
 
 typedef struct s_material
 {
 	t_specular	spec;
+	bool		has_specular;
 	char		*texture_path;
 	char		*bump_map_path;
 }	t_material;

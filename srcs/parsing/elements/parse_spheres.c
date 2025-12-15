@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:08:40 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 16:08:43 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 18:04:42 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "../validation/validation.h"
 #include "libft.h"
 #include "parsing_internal.h"
+
 
 bool	parse_sphere_core(char **attr, t_sphere *item)
 {
@@ -42,8 +43,8 @@ bool	parse_spheres(char **attr, t_vector *spheres)
 		return (print_error("Sphere attributes count is incorrect"), false);
 	if (!parse_sphere_core(attr, &item))
 		return (false);
-	if (!parse_optional_data(attr + 4, &item.mat, len))
-		return (false);
+	if (!parse_optional_data(attr + 4, &item.mat, len - 4))
+		return (material_destroy(&item.mat), false);
 	if (!vector_push_back(spheres, &item))
 		return (print_error("Memory allocation problem"), false);
 	return (true);

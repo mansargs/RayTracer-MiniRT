@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:07:35 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 16:07:38 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 18:06:16 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	parse_cylinders(char **a, t_vector *cylinders)
 	if (!parse_cylinder_core(a, &item))
 		return (false);
 	if (!parse_optional_data(a + 6, &item.mat, len - 6))
-		return (false);
+		return (material_destroy(&item.mat), false);
 	if (!vector_push_back(cylinders, &item))
 		return (print_error("Memory allocation problem"), false);
 	return (true);

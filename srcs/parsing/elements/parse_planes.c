@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:36:38 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 16:07:59 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 18:06:01 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool	parse_planes(char **attr, t_vector *planes)
 	if (!parse_plane_core(attr, &item))
 		return (false);
 	if (!parse_optional_data(attr + 4, &item.mat, len - 4))
-		return (false);
+		return (material_destroy(&item.mat), false);
 	if (!vector_push_back(planes, &item))
 		return (print_error("Memory allocation problem"), false);
 	return (true);

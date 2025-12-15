@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:07:47 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 16:07:49 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 18:02:26 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	parse_opt_specular(char **a, t_material *m, size_t i, size_t len)
 {
 	if (!(is_float(a[i]) && i + 1 < len && is_integer(a[i + 1])))
 		return (0);
-	if (m->spec.k_s != -1)
+	if (m->has_specular == true)
 		return (print_error("Duplicate specular"), -1);
 	if (!parse_specular_core(&a[i], &m->spec))
 		return (-1);
@@ -75,7 +75,10 @@ bool	parse_optional_data(char **a, t_material *m, size_t len)
 		if (step < 0)
 			return (false);
 		if (step > 0)
+		{
+			m->has_specular = true;
 			i += step;
+		}
 		else
 		{
 			step = parse_opt_texture(a[i], m);

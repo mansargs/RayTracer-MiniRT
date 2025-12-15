@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:06:29 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 16:06:32 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 17:49:00 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,18 @@
 
 bool	valid_extension(const char *path, const char *extension)
 {
-	char	*s;
 	size_t	extension_len;
+	size_t	path_len;
 
+	if (!path || !extension)
+		return (false);
 	extension_len = ft_strlen(extension);
-	if (ft_strlen(path) < extension_len)
-	{
-		ft_putendl_fd("File has invalid extension", STDERR_FILENO);
+	path_len = ft_strlen(path);
+	if (path_len < extension_len)
 		return (false);
-	}
-	s = ft_substr(path, ft_strlen(path) - extension_len,
-			extension_len);
-	if (!s)
-	{
-		ft_putendl_fd("Problem with the memory", STDERR_FILENO);
-		return (false);
-	}
-	if (ft_strcmp(s, extension) == 0)
-		return (free(s), true);
-	free(s);
-	ft_putendl_fd("File has invalid extension", STDERR_FILENO);
+	path += path_len - extension_len;
+	if (ft_strcmp(path, extension) == 0)
+		return (true);
 	return (false);
 }
 
@@ -49,7 +41,10 @@ bool	is_valid_arguments(int argc, char *argv[])
 		return (false);
 	}
 	if (!valid_extension(argv[1], FILE_EXTENSION))
+	{
+		ft_putendl_fd("File has invalid extension", STDERR_FILENO);
 		return (false);
+	}
 	return (true);
 }
 

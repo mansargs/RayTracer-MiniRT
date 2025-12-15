@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:04:41 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 16:03:56 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 18:07:02 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdbool.h>
 # include "minirt.h"
 
+void		material_destroy(t_material *mat);
 void		print_error(char *str);
 int			count_attributes(char **attr);
 bool		all_spaces(const char *line);

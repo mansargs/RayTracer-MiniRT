@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:39:29 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 15:48:49 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 17:33:16 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ bool	parse_file(const char *path, t_scene *scene)
 	if (!parse_loop(fd, scene))
 		ret = false;
 	close(fd);
-	if (scene->ambient.is_set == false || scene->camera.is_set == false
-		|| scene->lights.size == 0)
+	if ((scene->ambient.is_set == false || scene->camera.is_set == false
+		|| scene->lights.size == 0) && ret == true)
 	{
 		ret = false;
 		print_error("File must have 1 camera, 1 ambient and light(s)");

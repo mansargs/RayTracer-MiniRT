@@ -15,7 +15,7 @@ CYAN    := \033[36m
 # =============================
 NAME        = miniRT
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra -Werror -fsanitize=address
 RM          = rm -f
 
 SRC_DIR     = srcs
@@ -27,6 +27,7 @@ PARSING_ELEM = $(PARSING)/elements
 PARSING_VAL = $(PARSING)/validation
 PARSING_UTL = $(PARSING)/utils
 CONTAINER   = $(SRC_DIR)/container
+UTILS       = $(SRC_DIR)/utils
 
 LIBFT_DIR   = $(LIB_DIR)/libft
 GNL_DIR     = $(LIB_DIR)/gnl
@@ -60,7 +61,8 @@ SRCS = \
 	$(PARSING_VAL)/validation_part2.c \
 	$(PARSING_UTL)/parse_helpers.c \
 	$(PARSING_UTL)/helpers.c \
-	$(CONTAINER)/vector.c
+	$(CONTAINER)/vector.c \
+	$(UTILS)/free.c $(UTILS)/init.c $(UTILS)/print_test.c
 
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -73,7 +75,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(GNL) $(MLX) $(OBJS)
 	@echo "$(CYAN)[Linking]$(RESET) $(NAME)"
-	@$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(MLX) -lm
+	@$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(MLX) -lm -fsanitize=address
 	@echo "$(GREEN)Build complete ✔$(RESET)"
 
 # =============================
