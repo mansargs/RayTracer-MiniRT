@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:27:50 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 12:54:11 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 15:24:12 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@
 #include "libft.h"
 #include "utils.h"
 #include "pars.h"
+
+void	free_scene(t_scene *scene)
+{
+	vector_free(&scene->lights);
+	vector_free(&scene->spheres);
+	vector_free(&scene->planes);
+	vector_free(&scene->cylinders);
+	vector_free(&scene->cones);
+}
 
 bool	init_scene(t_scene *scene)
 {

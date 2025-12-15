@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 00:36:58 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/10 02:13:37 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 15:02:52 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 # define EMPTY_VEC 0
 # define GROW 2
 
-# include "new_types.h"
-# include <stdbool.h>
+# include "minirt.h"
 
 bool	vector_init(t_vector *vector, size_t elem_size);
 bool	vector_push_back(t_vector *vector, void *elem);
