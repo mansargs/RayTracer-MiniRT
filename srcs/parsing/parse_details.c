@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 05:51:27 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/13 00:36:03 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 13:08:23 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 static bool	parse_specular(char **attributes, t_specular *spec)
 {
-	if (!is_valid_float(attributes[0]))
+	if (!is_float(attributes[0]))
 		return (print_error("Specular: k_s must be a float 0–1"), false);
-	if (!is_valid_integer(attributes[1]))
+	if (!is_integer(attributes[1]))
 		return (print_error("Specular: n_s must be an integer 1–1000"), false);
 	spec->k_s = ft_atof(attributes[0]);
 	spec->n_s = ft_atoi(attributes[1]);
@@ -40,27 +40,50 @@ static bool	parse_texture(char **filename, const char *path)
 	return (true);
 }
 
-bool	parse_optional_data(char **attributes, t_material *mat, size_t len)
+int	parse_opt_specular(char **a, t_material *m, size_t i, size_t len)
+{
+	if (!(is_float(a[i]) && i + 1 < len && is_integer(a[i + 1])))
+		return (0);
+	if (m->spec.k_s != -1)
+		return (print_error("Duplicate specular"), -1);
+	if (!parse_specular(&a[i], &m->spec))
+		return (-1);
+	return (2);
+}
+
+int	parse_opt_texture(char *attr, t_material *m)
+{
+	if (!valid_extension(attr, TEXTURE_EXTENSION))
+		return (0);
+	if (!m->texture_path)
+		return (parse_texture(&m->texture_path, attr), 1);
+	if (!m->bump_map_path)
+		return (parse_texture(&m->bump_map_path, attr), 1);
+	return (print_error("Too many textures"), -1);
+}
+
+bool	parse_optional_data(char **a, t_material *m, size_t len)
 {
 	size_t	i;
+	int		step;
 
 	i = 0;
-	if (!attributes[0])
-		return (true);
-	if (len >= 2)
+	while (i < len)
 	{
-		if (!parse_specular(attributes, &mat->spec))
+		step = parse_opt_specular(a, m, i, len);
+		if (step < 0)
 			return (false);
-		i += 2;
+		if (step > 0)
+			i += step;
+		else
+		{
+			step = parse_opt_texture(a[i], m);
+			if (step <= 0)
+				return (print_error("Optional attributes are incorrect"),
+					false);
+			i += step;
+		}
 	}
-	if (i < len)
-		if (!parse_texture(&mat->texture_path, attributes[i++]))
-			return (false);
-	if (i < len)
-		if (!parse_texture(&mat->bump_map_path, attributes[i++]))
-			return (false);
-	if (i != len)
-		return (print_error("Optional attributes are incorrect"), false);
 	return (true);
 }
 

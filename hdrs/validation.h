@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:18:24 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/12 23:12:22 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 11:34:09 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 
 bool		all_spaces(const char *line);
 bool		is_valid_arguments(int argc, char *argv[]);
-bool		is_valid_float(const char *str);
+bool		is_float(const char *str);
 bool		is_valid_point(const char *str, float range_min, float range_max);
 bool		is_valid_rgb(const char *str);
 bool		is_normalized_vector(t_vec3 *p);
 bool		out_of_range(float num, float range_min, float range_max);
-bool		is_valid_integer(const char *str);
+bool		is_integer(const char *str);
 bool		valid_extension(const char *path, const char *extension);
 
 #endif

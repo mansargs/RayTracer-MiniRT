@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 03:34:23 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/12 22:58:39 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 12:57:33 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "new_types.h"
 #include "vector.h"
 
-void free_split(char **split)
+void	free_split(char **split)
 {
 	int	i;
 

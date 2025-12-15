@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 06:48:52 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/11 16:14:43 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 12:18:12 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static float	fraction_part(const char *str)
 		fract /= 10.0f;
 		str++;
 	}
-	return num;
+	return (num);
 }
 
 float	ft_atof(const char *str)
@@ -37,11 +37,16 @@ float	ft_atof(const char *str)
 	num = 0.0f;
 	while (*str && (*str == ' ' || (*str >= 9 && *str <= 13)))
 		str++;
-	if (*str == '-' || *str == '+')
-		sign = (*str++ == '-') ? -1 : 1;
+	if (*str == '-')
+	{
+		sign = -1;
+		str++;
+	}
+	else if (*str == '+')
+		str++;
 	while (*str >= '0' && *str <= '9')
 		num = 10.0f * num + (*str++ - '0');
 	if (*str == '.')
 		num += fraction_part(str + 1);
-	return num * sign;
+	return (num * sign);
 }

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 02:54:33 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/13 00:52:22 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 13:06:30 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "validation.h"
 #include <stdbool.h>
 #include "new_types.h"
-#include"utils.h"
+#include "utils.h"
 #include "pars.h"
 
 bool	parse_based_on_type(char **attributes, t_scene *scene)
@@ -47,7 +47,7 @@ bool	parse_line(char *line, t_scene *scene, size_t *len)
 	bool	ret_value;
 
 	ret_value = true;
-	if(all_spaces(line))
+	if (all_spaces(line))
 		return (true);
 	*len = ft_strlen(line);
 	line[*len - 1] = '\0';
@@ -107,8 +107,8 @@ bool	parse_file(const char *path, t_scene *scene)
 	if (!parse_loop(fd, scene))
 		ret = false;
 	close(fd);
-	if (scene->ambient.is_set == false || scene->camera.is_set == false ||
-		scene->lights.size == 0)
+	if (scene->ambient.is_set == false || scene->camera.is_set == false
+		|| scene->lights.size == 0)
 	{
 		ret = false;
 		print_error("File must have 1 camera, 1 ambient and light(s)");
