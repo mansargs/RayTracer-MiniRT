@@ -6,14 +6,15 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:31:36 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 15:40:52 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 16:08:14 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_INTERNAL_H
 # define PARSING_INTERNAL_H
 
-#include "minirt.h"
+# include "minirt.h"
+# include "vector.h"
 
 bool	parse_ambient_light(char **attributes, t_ambient *ambient);
 bool	parse_camera(char **attributes, t_camera *camera);

@@ -6,11 +6,12 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:37:41 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 15:28:15 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/12/15 16:05:29 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+#include "libft.h"
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -23,6 +24,7 @@ int	count_attributes(char **attr)
 		;
 	return (i);
 }
+
 bool	all_spaces(const char *line)
 {
 	int	i;
@@ -37,7 +39,7 @@ bool	all_spaces(const char *line)
 	return (true);
 }
 
-inline bool	out_of_range(float num, float range_min, float range_max)
+bool	out_of_range(float num, float range_min, float range_max)
 {
 	return (num < range_min || num > range_max);
 }

@@ -22,10 +22,11 @@ SRC_DIR     = srcs
 OBJ_DIR     = objects
 LIB_DIR     = libraries
 
-VALIDATION  = $(SRC_DIR)/validation
-VECTOR      = $(SRC_DIR)/vector
 PARSING     = $(SRC_DIR)/parsing
-UTILS       = $(SRC_DIR)/utils
+PARSING_ELEM = $(PARSING)/elements
+PARSING_VAL = $(PARSING)/validation
+PARSING_UTL = $(PARSING)/utils
+CONTAINER   = $(SRC_DIR)/container
 
 LIBFT_DIR   = $(LIB_DIR)/libft
 GNL_DIR     = $(LIB_DIR)/gnl
@@ -36,6 +37,7 @@ GNL         = $(GNL_DIR)/gnl.a
 MLX         = $(MLX_DIR)/libmlx.a
 
 INCS        = -I hdrs \
+              -I $(SRC_DIR) \
               -I $(LIBFT_DIR) \
               -I $(GNL_DIR) \
               -I $(MLX_DIR)/include
@@ -45,11 +47,20 @@ INCS        = -I hdrs \
 # =============================
 SRCS = \
 	$(SRC_DIR)/main.c \
-	$(VALIDATION)/validation_part1.c $(VALIDATION)/validation_part2.c \
-	$(VECTOR)/vector.c \
-	$(UTILS)/free.c $(UTILS)/utils.c \
-	$(PARSING)/parsing.c $(PARSING)/parse_basic.c $(PARSING)/parse_spheres_planes.c \
-	$(PARSING)/parse_quadrics.c $(PARSING)/parse_optional.c $(PARSING)/parse_helpers.c
+	$(PARSING)/identifier.c \
+	$(PARSING_ELEM)/parse_ambient.c \
+	$(PARSING_ELEM)/parse_camera.c \
+	$(PARSING_ELEM)/parse_lights.c \
+	$(PARSING_ELEM)/parse_spheres.c \
+	$(PARSING_ELEM)/parse_planes.c \
+	$(PARSING_ELEM)/parse_cones.c \
+	$(PARSING_ELEM)/parse_cylinders.c \
+	$(PARSING_ELEM)/parse_optional.c \
+	$(PARSING_VAL)/validation_part1.c \
+	$(PARSING_VAL)/validation_part2.c \
+	$(PARSING_UTL)/parse_helpers.c \
+	$(PARSING_UTL)/helpers.c \
+	$(CONTAINER)/vector.c
 
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

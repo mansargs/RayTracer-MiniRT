@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: GitHub Copilot <copilot@example.com>       +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15  GitHub Copilot                 #+#    #+#             */
-/*   Updated: 2025/12/15  GitHub Copilot                 ###   ########.fr       */
+/*   Created: 2025/12/15 16:04:46 by mansargs          #+#    #+#             */
+/*   Updated: 2025/12/15 16:05:06 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,3 @@ bool	parse_point(const char *str, t_vec3 *point)
 	free_split(split);
 	return (true);
 }
-
-
-
-

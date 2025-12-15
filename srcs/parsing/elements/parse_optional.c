@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_optional.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: GitHub Copilot <copilot@example.com>       +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15  GitHub Copilot                 #+#    #+#             */
-/*   Updated: 2025/12/15  GitHub Copilot                 ###   ########.fr       */
+/*   Created: 2025/12/15 16:07:47 by mansargs          #+#    #+#             */
+/*   Updated: 2025/12/15 16:07:49 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
