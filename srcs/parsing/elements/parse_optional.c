@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_details.c                                    :+:      :+:    :+:   */
+/*   parse_optional.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: GitHub Copilot <copilot@example.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 05:51:27 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 13:08:23 by mansargs         ###   ########.fr       */
+/*   Created: 2025/12/15  GitHub Copilot                 #+#    #+#             */
+/*   Updated: 2025/12/15  GitHub Copilot                 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "new_types.h"
-#include "validation.h"
-#include "utils.h"
+#include <math.h>
+#include "../utils/utils.h"
+#include "../validation/validation.h"
 #include "libft.h"
+#include "parsing_internal.h"
 
-static bool	parse_specular(char **attributes, t_specular *spec)
+static bool	parse_specular_core(char **attributes, t_specular *spec)
 {
 	if (!is_float(attributes[0]))
 		return (print_error("Specular: k_s must be a float 0–1"), false);
@@ -30,7 +31,7 @@ static bool	parse_specular(char **attributes, t_specular *spec)
 	return (true);
 }
 
-static bool	parse_texture(char **filename, const char *path)
+static bool	parse_texture_core(char **filename, const char *path)
 {
 	if (!valid_extension(path, TEXTURE_EXTENSION))
 		return (print_error("Texture or bump map can be only .xpm"), false);
@@ -40,25 +41,25 @@ static bool	parse_texture(char **filename, const char *path)
 	return (true);
 }
 
-int	parse_opt_specular(char **a, t_material *m, size_t i, size_t len)
+static int	parse_opt_specular(char **a, t_material *m, size_t i, size_t len)
 {
 	if (!(is_float(a[i]) && i + 1 < len && is_integer(a[i + 1])))
 		return (0);
 	if (m->spec.k_s != -1)
 		return (print_error("Duplicate specular"), -1);
-	if (!parse_specular(&a[i], &m->spec))
+	if (!parse_specular_core(&a[i], &m->spec))
 		return (-1);
 	return (2);
 }
 
-int	parse_opt_texture(char *attr, t_material *m)
+static int	parse_opt_texture(char *attr, t_material *m)
 {
 	if (!valid_extension(attr, TEXTURE_EXTENSION))
 		return (0);
 	if (!m->texture_path)
-		return (parse_texture(&m->texture_path, attr), 1);
+		return (parse_texture_core(&m->texture_path, attr), 1);
 	if (!m->bump_map_path)
-		return (parse_texture(&m->bump_map_path, attr), 1);
+		return (parse_texture_core(&m->bump_map_path, attr), 1);
 	return (print_error("Too many textures"), -1);
 }
 
@@ -84,33 +85,5 @@ bool	parse_optional_data(char **a, t_material *m, size_t len)
 			i += step;
 		}
 	}
-	return (true);
-}
-
-bool	parse_rgb(const char *str, t_rgb *rgb)
-{
-	char	**split;
-
-	split = ft_split(str, ',');
-	if (!split)
-		return (print_error("Memory allocation problem"), false);
-	rgb->r = ft_atoi(split[0]);
-	rgb->g = ft_atoi(split[1]);
-	rgb->b = ft_atoi(split[2]);
-	free_split(split);
-	return (true);
-}
-
-bool	parse_point(const char *str, t_vec3 *point)
-{
-	char	**split;
-
-	split = ft_split(str, ',');
-	if (!split)
-		return (print_error("Memory allocation problem"), false);
-	point->x = ft_atof(split[0]);
-	point->y = ft_atof(split[1]);
-	point->z = ft_atof(split[2]);
-	free_split(split);
 	return (true);
 }

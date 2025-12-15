@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   identifier.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 02:54:33 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 13:06:30 by mansargs         ###   ########.fr       */
+/*   Created: 2025/12/15 14:39:29 by mansargs          #+#    #+#             */
+/*   Updated: 2025/12/15 15:45:08 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "get_next_line.h"
-#include "validation.h"
-#include <stdbool.h>
-#include "new_types.h"
-#include "utils.h"
-#include "pars.h"
+#include "validation/validation.h"
+#include "utils/utils.h"
+#include "elements/parsing_internal.h"
+#include "minirt.h"
 
-bool	parse_based_on_type(char **attributes, t_scene *scene)
+static bool	parse_based_on_type(char **attributes, t_scene *scene)
 {
 	if (ft_strcmp(attributes[0], "A") == 0)
 		return (parse_ambient_light(attributes, &scene->ambient));
@@ -41,7 +40,7 @@ bool	parse_based_on_type(char **attributes, t_scene *scene)
 	}
 }
 
-bool	parse_line(char *line, t_scene *scene, size_t *len)
+static bool	parse_line(char *line, t_scene *scene, size_t *len)
 {
 	char	**attributes;
 	bool	ret_value;
@@ -63,7 +62,7 @@ bool	parse_line(char *line, t_scene *scene, size_t *len)
 	return (ret_value);
 }
 
-bool	parse_loop(int fd, t_scene *scene)
+static bool	parse_loop(int fd, t_scene *scene)
 {
 	char	*line;
 	size_t	len;
