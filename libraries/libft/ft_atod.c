@@ -6,16 +6,16 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 06:48:52 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 12:18:12 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:59:56 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static float	fraction_part(const char *str)
+static double	fraction_part(const char *str)
 {
-	float	fract;
-	float	num;
+	double	fract;
+	double	num;
 
 	num = 0.0f;
 	fract = 0.1f;
@@ -28,10 +28,10 @@ static float	fraction_part(const char *str)
 	return (num);
 }
 
-float	ft_atof(const char *str)
+double	ft_atod(const char *str)
 {
 	int		sign;
-	float	num;
+	double	num;
 
 	sign = 1;
 	num = 0.0f;

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:28:33 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 18:28:36 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:54:09 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ void print_scene(t_scene *scene)
 
     // Spheres
     PRINT_VECTOR(scene->spheres, t_sphere,
-        printf("    Sphere %zu: center=(%.2f,%.2f,%.2f), diameter=%.2f, color=(%d,%d,%d), checker=%d\n",
+        printf("    Sphere %zu: center=(%.2f,%.2f,%.2f), radius=%.2f, color=(%d,%d,%d), checker=%d\n",
             i, obj->center.x, obj->center.y, obj->center.z,
-            obj->diameter, obj->color.r, obj->color.g, obj->color.b,
+            obj->radius, obj->color.r, obj->color.g, obj->color.b,
             obj->checkerboard_enabled);
         print_material(&obj->mat));
 
@@ -106,10 +106,10 @@ void print_scene(t_scene *scene)
 
     // Cylinders
     PRINT_VECTOR(scene->cylinders, t_cylinder,
-        printf("    Cylinder %zu: center=(%.2f,%.2f,%.2f), orientation=(%.2f,%.2f,%.2f), diameter=%.2f, height=%.2f, color=(%d,%d,%d), checker=%d\n",
+        printf("    Cylinder %zu: center=(%.2f,%.2f,%.2f), orientation=(%.2f,%.2f,%.2f), radius=%.2f, height=%.2f, color=(%d,%d,%d), checker=%d\n",
             i, obj->center.x, obj->center.y, obj->center.z,
             obj->orientation.x, obj->orientation.y, obj->orientation.z,
-            obj->diameter, obj->height,
+            obj->radius, obj->height,
             obj->color.r, obj->color.g, obj->color.b,
             obj->checkerboard_enabled);
         print_material(&obj->mat));

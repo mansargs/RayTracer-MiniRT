@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:07:47 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 18:02:26 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:59:56 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 
 static bool	parse_specular_core(char **attributes, t_specular *spec)
 {
-	if (!is_float(attributes[0]))
-		return (print_error("Specular: k_s must be a float 0–1"), false);
+	if (!is_double(attributes[0]))
+		return (print_error("Specular: k_s must be a double 0–1"), false);
 	if (!is_integer(attributes[1]))
 		return (print_error("Specular: n_s must be an integer 1–1000"), false);
-	spec->k_s = ft_atof(attributes[0]);
+	spec->k_s = ft_atod(attributes[0]);
 	spec->n_s = ft_atoi(attributes[1]);
 	if (out_of_range(spec->k_s, 0, 1))
 		return (print_error("Specular: k_s out of range 0–1"), false);
@@ -43,7 +43,7 @@ static bool	parse_texture_core(char **filename, const char *path)
 
 static int	parse_opt_specular(char **a, t_material *m, size_t i, size_t len)
 {
-	if (!(is_float(a[i]) && i + 1 < len && is_integer(a[i + 1])))
+	if (!(is_double(a[i]) && i + 1 < len && is_integer(a[i + 1])))
 		return (0);
 	if (m->has_specular == true)
 		return (print_error("Duplicate specular"), -1);

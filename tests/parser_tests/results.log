@@ -1,7 +1,7 @@
 Test run started at Mon Dec 15 18:19:50 +04 2025
 --- Test: /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/extra_spaces_newlines.rt ---
 Command: /home/lenovo/Desktop/RayTracer-MiniRT/miniRT /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/extra_spaces_newlines.rt
-    
+
 Exit code: 0
 
 --- Test: /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/invalid_camera_fov.rt ---
@@ -31,27 +31,27 @@ Exit code: 1
 --- Test: /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/invalid_normal_range.rt ---
 Command: /home/lenovo/Desktop/RayTracer-MiniRT/miniRT /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/invalid_normal_range.rt
     Error
-    Invalid float value or value out of allowed range.
+    Invalid double value or value out of allowed range.
 Exit code: 1
 
 --- Test: /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/invalid_number_format.rt ---
 Command: /home/lenovo/Desktop/RayTracer-MiniRT/miniRT /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/invalid_number_format.rt
     Error
-    Invalid float value or value out of allowed range.
+    Invalid double value or value out of allowed range.
 Exit code: 1
 
 --- Test: /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/multiple_lights_and_objects.rt ---
 Command: /home/lenovo/Desktop/RayTracer-MiniRT/miniRT /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/multiple_lights_and_objects.rt
-    
+
 Exit code: 0
 
 --- Test: /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/valid_full.rt ---
 Command: /home/lenovo/Desktop/RayTracer-MiniRT/miniRT /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/valid_full.rt
-    
+
 Exit code: 0
 
 --- Test: /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/valid_simple.rt ---
 Command: /home/lenovo/Desktop/RayTracer-MiniRT/miniRT /home/lenovo/Desktop/RayTracer-MiniRT/tests/parser_tests/valid_simple.rt
-    
+
 Exit code: 0
 

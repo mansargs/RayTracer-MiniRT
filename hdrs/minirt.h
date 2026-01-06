@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 18:20:44 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/05 21:15:25 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ typedef struct s_rgb
 
 typedef struct s_vec3
 {
-	float	x;
-	float	y;
-	float	z;
+	double	x;
+	double	y;
+	double	z;
 }	t_vec3;
 
 typedef struct s_specular
 {
-	float	k_s;
+	double	k_s;
 	int		n_s;
 }	t_specular;
 
@@ -54,7 +54,7 @@ typedef struct s_material
 
 typedef struct s_ambient
 {
-	float	lighting_ratio;
+	double	lighting_ratio;
 	bool	is_set;
 	t_rgb	color;
 }	t_ambient;
@@ -64,20 +64,20 @@ typedef struct s_camera
 	bool	is_set;
 	t_vec3	position;
 	t_vec3	orientation;
-	float	fov;
+	double	fov;
 }	t_camera;
 
 typedef struct s_light
 {
 	t_vec3	position;
-	float	brightness;
+	double	brightness;
 	t_rgb	color;
 }	t_light;
 
 typedef struct s_sphere
 {
 	t_vec3		center;
-	float		diameter;
+	double		radius;
 	t_rgb		color;
 	bool		checkerboard_enabled;
 	t_material	mat;
@@ -96,8 +96,8 @@ typedef struct s_cylinder
 {
 	t_vec3		center;
 	t_vec3		orientation;
-	float		diameter;
-	float		height;
+	double		radius;
+	double		height;
 	t_rgb		color;
 	bool		checkerboard_enabled;
 	t_material	mat;
@@ -107,8 +107,8 @@ typedef struct s_cone
 {
 	t_vec3		center;
 	t_vec3		orientation;
-	float		height;
-	float		angle;
+	double		height;
+	double		angle;
 	t_rgb		color;
 	bool		checkerboard_enabled;
 	t_material	mat;

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 13:32:19 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 15:34:38 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:59:56 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ bool	parse_ambient_light(char **attributes, t_ambient *ambient)
 	if (len != 3)
 		return (print_error("Ambient light attributes count is incorrect"),
 			false);
-	if (!is_float(attributes[1]))
-		return (print_error("Invalid float number"), false);
-	ambient->lighting_ratio = ft_atof(attributes[1]);
+	if (!is_double(attributes[1]))
+		return (print_error("Invalid double number"), false);
+	ambient->lighting_ratio = ft_atod(attributes[1]);
 	if (out_of_range(ambient->lighting_ratio, 0, 1))
 		return (print_error("Ambient lighting ratio out of range"), false);
 	if (!(is_valid_rgb(attributes[2])

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:07:35 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 18:06:16 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/06 20:31:30 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "../validation/validation.h"
 #include "libft.h"
 #include "parsing_internal.h"
+#include "vec_math.h"
 
 static bool	parse_cylinder_core(char **a, t_cylinder *c)
 {
@@ -22,19 +23,19 @@ static bool	parse_cylinder_core(char **a, t_cylinder *c)
 			&& is_valid_point(a[2], -1, 1)
 			&& is_valid_rgb(a[5])))
 		return (false);
-	if (!(is_float(a[3]) && is_float(a[4])))
-		return (print_error("Invalid float number"), false);
+	if (!(is_double(a[3]) && is_double(a[4])))
+		return (print_error("Invalid double number"), false);
 	if (!(parse_point(a[1], &c->center)
 			&& parse_point(a[2], &c->orientation)
 			&& parse_rgb(a[5], &c->color)))
 		return (false);
-	if (!is_normalized_vector(&c->orientation))
-		return (print_error("Cylinder orientation vector must be normalized"),
+	if (vec_normalization(&c->orientation) == NORMAILZATION_FAIL)
+		return (print_error("Cylinder orientation can't be (0,0,0) vector"),
 			false);
-	c->diameter = ft_atof(a[3]);
-	if (c->diameter <= 0)
-		return (print_error("Cylinder diameter must be positive"), false);
-	c->height = ft_atof(a[4]);
+	c->radius = ft_atod(a[3]) / 2;
+	if (c->radius <= 0)
+		return (print_error("Cylinder radius must be positive"), false);
+	c->height = ft_atod(a[4]);
 	if (c->height <= 0)
 		return (print_error("Cylinder height must be positive"), false);
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:06:29 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 17:49:00 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:47:57 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool	is_valid_arguments(int argc, char *argv[])
 	return (true);
 }
 
-bool	is_float(const char *str)
+bool	is_double(const char *str)
 {
 	bool	has_digit;
 

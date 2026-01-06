@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:06:11 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 16:06:13 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/05 21:44:33 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ bool	is_valid_rgb(const char *str)
 	return (true);
 }
 
-bool	is_valid_point(const char *str, float range_min, float range_max)
+bool	is_valid_point(const char *str, double range_min, double range_max)
 {
 	char	**split;
 	int		i;
@@ -59,11 +59,11 @@ bool	is_valid_point(const char *str, float range_min, float range_max)
 	i = 0;
 	while (i < 3)
 	{
-		if (!is_float(split[i])
-			|| out_of_range(ft_atof(split[i]), range_min, range_max))
+		if (!is_double(split[i])
+			|| out_of_range(ft_atod(split[i]), range_min, range_max))
 		{
 			free_split(split);
-			print_error("Invalid float value or value out of allowed range.");
+			print_error("Invalid double value or value out of allowed range.");
 			return (false);
 		}
 		i++;
@@ -87,12 +87,4 @@ bool	is_integer(const char *str)
 		++str;
 	}
 	return (true);
-}
-
-bool	is_normalized_vector(t_vec3 *p)
-{
-	float	len;
-
-	len = sqrtf(p->x * p->x + p->y * p->y + p->z * p->z);
-	return (fabsf(len - 1.0f) < 1e-6);
 }

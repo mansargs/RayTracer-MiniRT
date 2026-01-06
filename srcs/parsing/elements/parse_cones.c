@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:31:24 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 18:06:22 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/06 20:30:28 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "../validation/validation.h"
 #include "libft.h"
 #include "parsing_internal.h"
+#include "vec_math.h"
 
 static bool	parse_cone_core(char **a, t_cone *c)
 {
@@ -22,19 +23,18 @@ static bool	parse_cone_core(char **a, t_cone *c)
 			&& is_valid_point(a[2], -1, 1)
 			&& is_valid_rgb(a[5])))
 		return (false);
-	if (!(is_float(a[3]) && is_float(a[4])))
-		return (print_error("Invalid float number"), false);
+	if (!(is_double(a[3]) && is_double(a[4])))
+		return (print_error("Invalid double number"), false);
 	if (!(parse_point(a[1], &c->center)
 			&& parse_point(a[2], &c->orientation)
 			&& parse_rgb(a[5], &c->color)))
 		return (false);
-	if (!is_normalized_vector(&c->orientation))
-		return (print_error("Cone orientation vector must be normalized"),
-			false);
-	c->height = ft_atof(a[3]);
+	if (vec_normalization(&c->orientation) == NORMAILZATION_FAIL)
+		return (print_error("Cone orientation can't be (0,0,0) vector"), false);
+	c->height = ft_atod(a[3]);
 	if (c->height <= 0)
 		return (print_error("Cone height must be positive"), false);
-	c->angle = ft_atof(a[4]);
+	c->angle = ft_atod(a[4]);
 	if (c->angle <= 0 || c->angle >= 90)
 		return (print_error("Cone angle must be in (0, 90)"), false);
 	return (true);

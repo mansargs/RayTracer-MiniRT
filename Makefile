@@ -62,7 +62,10 @@ SRCS = \
 	$(PARSING_UTL)/parse_helpers.c \
 	$(PARSING_UTL)/helpers.c \
 	$(CONTAINER)/vector.c \
-	$(UTILS)/free.c $(UTILS)/init.c $(UTILS)/print_test.c
+	$(UTILS)/free.c $(UTILS)/init.c $(UTILS)/print_test.c \
+	$(SRC_DIR)/vec_maths/vec_arithmetic.c \
+	$(SRC_DIR)/vec_maths/vec_magnitude.c \
+	$(SRC_DIR)/vec_maths/vec_normalized.c
 
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:08:40 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 18:04:42 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:59:56 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ bool	parse_sphere_core(char **attr, t_sphere *item)
 	if (!(is_valid_point(attr[1], -INFINITY, INFINITY)
 			&& is_valid_rgb(attr[3])))
 		return (false);
-	if (!is_float(attr[2]))
-		return (print_error("Invalid float number"), false);
-	item->diameter = ft_atof(attr[2]);
-	if (item->diameter <= 0)
-		return (print_error("Diameter must be positive"), false);
+	if (!is_double(attr[2]))
+		return (print_error("Invalid double number"), false);
+	item->radius = ft_atod(attr[2]) / 2;
+	if (item->radius <= 0)
+		return (print_error("radius must be positive"), false);
 	if (!(parse_point(attr[1], &item->center)
 			&& parse_rgb(attr[3], &item->color)))
 		return (false);
