@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:15:53 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/06 20:27:41 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/06 20:43:49 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define NORMALIZATION_SUCCESS 0
 # define NORMAILZATION_FAIL -1
 
-double	vec_magnitude(const t_vec3 *point);
-int		vec_normalization(t_vec3* point);
+double	vec_magnitude(t_vec3 v);
+int		vec_normalization(t_vec3* v);
 t_vec3	vec_add(t_vec3 v1, t_vec3 v2);
 t_vec3	vec_sub(t_vec3 v1, t_vec3 v2);
 t_vec3	vec_scale(t_vec3 v1, double scale);

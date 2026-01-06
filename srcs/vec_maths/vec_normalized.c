@@ -6,23 +6,23 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:21:10 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/06 20:28:34 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/06 20:44:21 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_math.h"
 
-int vec_normalization(t_vec3* point)
+int vec_normalization(t_vec3* v)
 {
-	if (!point)
-		return (-1);
-	double len = vec_magnitude(point);
+	if (!v)
+		return (NORMAILZATION_FAIL);
+	double len = vec_magnitude(*v);
 	if (len < ESP)
 		return (NORMAILZATION_FAIL);
 	double inv_len = 1.0 / len;
-	point->x *= inv_len;
-	point->y *= inv_len;
-	point->z *= inv_len;
+	v->x *= inv_len;
+	v->y *= inv_len;
+	v->z *= inv_len;
 	return (NORMALIZATION_SUCCESS);
 }
 
