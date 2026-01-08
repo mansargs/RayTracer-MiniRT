@@ -6,13 +6,13 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:07:35 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/06 20:31:30 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:10:12 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../utils/utils.h"
-#include "../validation/validation.h"
+#include "parsing_utils.h"
+#include "validation.h"
 #include "libft.h"
 #include "parsing_internal.h"
 #include "vec_math.h"
@@ -46,6 +46,8 @@ bool	parse_cylinders(char **a, t_vector *cylinders)
 	t_cylinder	item;
 	size_t		len;
 
+	ft_memset(&item, 0, sizeof(t_sphere));
+	init_default_material(&item.mat);
 	len = count_attributes(a);
 	if (len < 6)
 		return (print_error("Cylinder attributes count is incorrect"), false);

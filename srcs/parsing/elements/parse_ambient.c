@@ -6,12 +6,12 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 13:32:19 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/05 19:59:56 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:01:43 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../utils/utils.h"
-#include "../validation/validation.h"
+#include "parsing_utils.h"
+#include "validation.h"
 #include "libft.h"
 #include "parsing_internal.h"
 

@@ -6,13 +6,13 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 00:39:01 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 16:00:34 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:04:41 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 #include "libft.h"
-#include "parsing/utils/utils.h"
+#include "utils.h"
 
 bool	vector_init(t_vector *vector, size_t elem_size)
 {

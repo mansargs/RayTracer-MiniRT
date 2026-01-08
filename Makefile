@@ -15,7 +15,7 @@ CYAN    := \033[36m
 # =============================
 NAME        = miniRT
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror
 RM          = rm -f
 
 SRC_DIR     = srcs
@@ -25,7 +25,7 @@ LIB_DIR     = libraries
 PARSING     = $(SRC_DIR)/parsing
 PARSING_ELEM = $(PARSING)/elements
 PARSING_VAL = $(PARSING)/validation
-PARSING_UTL = $(PARSING)/utils
+PARSING_UTL = $(PARSING)/parsing_utils
 CONTAINER   = $(SRC_DIR)/container
 UTILS       = $(SRC_DIR)/utils
 
@@ -39,9 +39,14 @@ MLX         = $(MLX_DIR)/libmlx.a
 
 INCS        = -I hdrs \
               -I $(SRC_DIR) \
+              -I $(PARSING_VAL) \
+			  -I $(PARSING_ELEM) \
+			  -I $(PARSING_UTL) \
               -I $(LIBFT_DIR) \
               -I $(GNL_DIR) \
-              -I $(MLX_DIR)/include
+              -I $(MLX_DIR)
+
+MLX_FLAGS = -lX11 -lXext -lm
 
 # =============================
 #         SOURCE FILES
@@ -78,7 +83,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(GNL) $(MLX) $(OBJS)
 	@echo "$(CYAN)[Linking]$(RESET) $(NAME)"
-	@$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(MLX) -lm -fsanitize=address
+	@$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(LIBFT) $(GNL) $(MLX) $(MLX_FLAGS)
 	@echo "$(GREEN)Build complete ✔$(RESET)"
 
 # =============================

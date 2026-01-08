@@ -6,14 +6,14 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:39:29 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 17:33:16 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:01:17 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "get_next_line.h"
-#include "validation/validation.h"
-#include "utils/utils.h"
+#include "validation.h"
+#include "parsing_utils.h"
 #include "elements/parsing_internal.h"
 #include "minirt.h"
 

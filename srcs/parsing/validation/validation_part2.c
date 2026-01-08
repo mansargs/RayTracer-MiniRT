@@ -6,13 +6,13 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:06:11 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/05 21:44:33 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:01:43 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "validation.h"
-#include "../utils/utils.h"
+#include "parsing_utils.h"
 #include <math.h>
 
 bool	is_valid_rgb(const char *str)

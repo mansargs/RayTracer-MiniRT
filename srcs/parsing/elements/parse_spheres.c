@@ -6,16 +6,15 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:08:40 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/05 19:59:56 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:10:22 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../utils/utils.h"
-#include "../validation/validation.h"
+#include "parsing_utils.h"
+#include "validation.h"
 #include "libft.h"
 #include "parsing_internal.h"
-
 
 bool	parse_sphere_core(char **attr, t_sphere *item)
 {
@@ -38,6 +37,8 @@ bool	parse_spheres(char **attr, t_vector *spheres)
 	t_sphere	item;
 	size_t		len;
 
+	ft_memset(&item, 0, sizeof(t_sphere));
+	init_default_material(&item.mat);
 	len = count_attributes(attr);
 	if (len < 4)
 		return (print_error("Sphere attributes count is incorrect"), false);

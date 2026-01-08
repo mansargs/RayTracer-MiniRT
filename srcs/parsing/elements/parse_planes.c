@@ -6,13 +6,13 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:36:38 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/06 20:32:11 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:10:17 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "../utils/utils.h"
-#include "../validation/validation.h"
+#include "parsing_utils.h"
+#include "validation.h"
 #include "libft.h"
 #include "parsing_internal.h"
 #include "vec_math.h"
@@ -37,6 +37,8 @@ bool	parse_planes(char **attr, t_vector *planes)
 	t_plane	item;
 	size_t	len;
 
+	ft_memset(&item, 0, sizeof(t_sphere));
+	init_default_material(&item.mat);
 	len = count_attributes(attr);
 	if (len < 4)
 		return (print_error("Plane attributes count is incorrect"), false);
