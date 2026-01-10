@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_normalized.c                                   :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 21:21:10 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/10 18:40:56 by mansargs         ###   ########.fr       */
+/*   Created: 2026/01/10 13:38:41 by mansargs          #+#    #+#             */
+/*   Updated: 2026/01/10 18:29:35 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_math.h"
+#ifndef RAY_H
+# define RAY_H
 
-t_vec3 vec_normalization(t_vec3 v)
+# include "minirt.h"
+# include "window.h"
+
+typedef struct s_ray
 {
-	t_vec3	normalized;
+	t_vec3	origin;
+	t_vec3	direction;
+}			t_ray;
 
-	double len = vec_magnitude(v);
-	if (len < EPS)
-		return (t_vec3){0.0, 0.0, 0.0};
-	double inv_len = 1.0 / len;
-	normalized.x =v.x * inv_len;
-	normalized.y =v.y * inv_len;
-	normalized.z =v.z * inv_len;
-	return (normalized);
-}
+typedef struct s_camera_pixel
+{
+	double	px;
+	double	py;
+}			t_camera_pixel;
 
+void	generate_rays(t_camera *cam, t_window *win);
+t_vec3	ray_at(t_ray* ray, double t);
+
+#endif

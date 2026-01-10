@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:46:09 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/06 20:18:32 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/10 14:10:30 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ t_vec3 vec_scale(t_vec3 v, double scale)
 	return (result);
 }
 
-double vec_dot_product(t_vec3 v1, t_vec3 v2)
+double vec_dot(t_vec3 v1, t_vec3 v2)
 {
 	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }
 
-t_vec3 vec_cross_product(t_vec3 v1, t_vec3 v2)
+t_vec3 vec_cross(t_vec3 v1, t_vec3 v2)
 {
 	t_vec3	result;
 

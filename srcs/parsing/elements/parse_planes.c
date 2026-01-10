@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:36:38 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/08 18:10:17 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/10 18:40:56 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static bool	parse_plane_core(char **attr, t_plane *p)
 			&& parse_point(attr[2], &p->orientation)
 			&& parse_rgb(attr[3], &p->color)))
 		return (false);
-	if (vec_normalization(&p->orientation) == NORMAILZATION_FAIL)
+	if (vec_magnitude(p->orientation) < EPS)
 		return (print_error("Plane orientation can't be (0,0,0) vector"), false);
 	return (true);
 }

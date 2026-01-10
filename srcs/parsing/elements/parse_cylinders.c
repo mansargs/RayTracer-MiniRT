@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:07:35 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/08 18:10:12 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/10 18:40:56 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	parse_cylinder_core(char **a, t_cylinder *c)
 			&& parse_point(a[2], &c->orientation)
 			&& parse_rgb(a[5], &c->color)))
 		return (false);
-	if (vec_normalization(&c->orientation) == NORMAILZATION_FAIL)
+	if (vec_magnitude(c->orientation) < EPS)
 		return (print_error("Cylinder orientation can't be (0,0,0) vector"),
 			false);
 	c->radius = ft_atod(a[3]) / 2;

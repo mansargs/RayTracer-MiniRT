@@ -28,6 +28,9 @@ PARSING_VAL = $(PARSING)/validation
 PARSING_UTL = $(PARSING)/parsing_utils
 CONTAINER   = $(SRC_DIR)/container
 UTILS       = $(SRC_DIR)/utils
+VEC_MATHS   = $(SRC_DIR)/vec_maths
+RAY_TRACING = $(SRC_DIR)/ray_tracing
+DRAWING     = $(SRC_DIR)/drawing
 
 LIBFT_DIR   = $(LIB_DIR)/libft
 GNL_DIR     = $(LIB_DIR)/gnl
@@ -68,9 +71,11 @@ SRCS = \
 	$(PARSING_UTL)/helpers.c \
 	$(CONTAINER)/vector.c \
 	$(UTILS)/free.c $(UTILS)/init.c $(UTILS)/print_test.c \
-	$(SRC_DIR)/vec_maths/vec_arithmetic.c \
-	$(SRC_DIR)/vec_maths/vec_magnitude.c \
-	$(SRC_DIR)/vec_maths/vec_normalized.c
+	$(VEC_MATHS)/vec_arithmetic.c \
+	$(VEC_MATHS)/vec_magnitude.c \
+	$(VEC_MATHS)/vec_normalized.c \
+	$(RAY_TRACING)/ray_generation.c \
+	$(DRAWING)/window.c
 
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

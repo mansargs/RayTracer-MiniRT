@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/05 21:15:25 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/10 19:00:41 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <stddef.h>
 # include <stdbool.h>
+
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
 
 typedef struct s_vector
 {
@@ -64,7 +68,13 @@ typedef struct s_camera
 	bool	is_set;
 	t_vec3	position;
 	t_vec3	orientation;
+	t_vec3	forward;
+	t_vec3	right;
+	t_vec3	up;
 	double	fov;
+	double	aspect_ratio;
+	double	half_height;
+	double	half_width;
 }	t_camera;
 
 typedef struct s_light
@@ -113,6 +123,14 @@ typedef struct s_cone
 	bool		checkerboard_enabled;
 	t_material	mat;
 }	t_cone;
+
+typedef enum e_object
+{
+	SPHERE = 1,
+	PLANE,
+	CONE,
+	CYLINDER
+}			t_object;
 
 typedef struct s_scene
 {

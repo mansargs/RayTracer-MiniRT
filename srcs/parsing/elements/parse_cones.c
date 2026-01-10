@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:31:24 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/08 18:10:01 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/10 18:40:56 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	parse_cone_core(char **a, t_cone *c)
 			&& parse_point(a[2], &c->orientation)
 			&& parse_rgb(a[5], &c->color)))
 		return (false);
-	if (vec_normalization(&c->orientation) == NORMAILZATION_FAIL)
+	if (vec_magnitude(c->orientation) < EPS)
 		return (print_error("Cone orientation can't be (0,0,0) vector"), false);
 	c->height = ft_atod(a[3]);
 	if (c->height <= 0)
