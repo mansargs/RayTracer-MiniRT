@@ -45,6 +45,7 @@ INCS        = -I hdrs \
               -I $(PARSING_VAL) \
 			  -I $(PARSING_ELEM) \
 			  -I $(PARSING_UTL) \
+			  -I $(DRAWING)/intersection \
               -I $(LIBFT_DIR) \
               -I $(GNL_DIR) \
               -I $(MLX_DIR)

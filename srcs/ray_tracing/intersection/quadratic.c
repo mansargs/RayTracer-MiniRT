@@ -6,12 +6,27 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 17:51:43 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/10 18:42:09 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:03:51 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 #include <math.h>
+
+double	get_min_positive(double t1, double t2)
+{
+	double	t;
+
+	t = INFINITY;
+	if (t1 > 0.0)
+		t = t1;
+	if (t2 > 0.0 && t2 < t)
+		t = t2;
+	if (t < INFINITY)
+		return (t);
+	else
+		return (-1.0);
+}
 
 t_quad	solve_quadratic(t_quad_coeffs coeffs)
 {

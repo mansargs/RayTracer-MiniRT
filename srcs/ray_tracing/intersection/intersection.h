@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 17:28:52 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/10 19:04:06 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:04:02 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ typedef struct s_quad_coeffs
 
 t_hit	intersect_sphere(t_ray *ray, t_sphere *sphere);
 t_quad	solve_quadratic(t_quad_coeffs coeffs);
+double	get_min_positive(double t1, double t2);
 
 #endif
