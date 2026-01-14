@@ -6,19 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 16:17:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/12 16:19:40 by mansargs         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   intersection_spheres.c                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/10 17:28:48 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/12 17:10:00 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:53:00 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +25,8 @@ static void	set_sphere_hit(t_hit *hit, double t, const t_ray *ray,
 	hit->point = ray_at(ray, t);
 	center_to_point = vec_sub(hit->point, sphere->center);
 	hit->normal = vec_normalization(center_to_point);
-	if (vec_dot(hit->normal, ray->direction) > 0)
-		hit->normal = vec_scale(hit->normal, -1.0);
+	// if (vec_dot(hit->normal, ray->direction) > 0)
+	// 	hit->normal = vec_scale(hit->normal, -1.0);
 }
 
 static t_hit	sphere_intersection(const t_ray *ray, const t_sphere *sphere)
