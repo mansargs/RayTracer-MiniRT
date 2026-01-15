@@ -6,16 +6,16 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 17:28:52 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/12 15:04:02 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:23:04 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERSECTION_H
-#define INTERSECTION_H
+# define INTERSECTION_H
 
-#include "vec_math.h"
-#include "ray.h"
-#include "minirt.h"
+# include "vec_math.h"
+# include "ray.h"
+# include "minirt.h"
 
 typedef struct s_hit
 {
@@ -41,7 +41,9 @@ typedef struct s_quad_coeffs
 	double	c;
 }			t_quad_coeffs;
 
-t_hit	intersect_sphere(t_ray *ray, t_sphere *sphere);
+t_hit	objects_intersection(const t_ray *ray, const t_scene *scene);
+t_hit	intersect_all_spheres(const t_ray *ray, const t_vector *spheres);
+t_hit	intersect_all_planes(const t_ray *ray, const t_vector *planes);
 t_quad	solve_quadratic(t_quad_coeffs coeffs);
 double	get_min_positive(double t1, double t2);
 

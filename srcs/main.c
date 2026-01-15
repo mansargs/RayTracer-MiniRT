@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:27:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/10 16:23:22 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:20:02 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	if (!parse_file(argv[1], &scene))
 		return (free_scene(&scene), EXIT_FAILURE);
-	// print_scene(&scene);
 	init_window_params(&window);
 	generate_rays(&scene.camera, &window);
 	sleep(5);

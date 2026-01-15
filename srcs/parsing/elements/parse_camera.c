@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 13:49:41 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/10 18:40:56 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:01:28 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ bool	parse_camera(char **attributes, t_camera *camera)
 			&& parse_point(attributes[2], &camera->orientation)))
 		return (false);
 	if (vec_magnitude(camera->orientation) < EPS)
-		return (print_error("Camera orientation can't be (0,0,0) vector"), false);
+		return (print_error("Camera orientation can't be (0,0,0) vector"),
+			false);
 	camera->is_set = true;
 	return (true);
 }

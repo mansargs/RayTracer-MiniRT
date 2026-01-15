@@ -71,7 +71,7 @@ SRCS = \
 	$(PARSING_UTL)/parse_helpers.c \
 	$(PARSING_UTL)/helpers.c \
 	$(CONTAINER)/vector.c \
-	$(UTILS)/free.c $(UTILS)/init.c $(UTILS)/print_test.c \
+	$(UTILS)/free.c $(UTILS)/init.c \
 	$(VEC_MATHS)/vec_arithmetic.c \
 	$(VEC_MATHS)/vec_magnitude.c \
 	$(VEC_MATHS)/vec_normalized.c \

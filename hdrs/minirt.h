@@ -6,12 +6,12 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/14 16:21:38 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:49:44 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NEW_TYPES_H
-# define NEW_TYPES_H
+#ifndef MINIRT_H
+# define MINIRT_H
 
 # include <stddef.h>
 # include <stdbool.h>

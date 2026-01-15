@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:11:41 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/08 18:01:43 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:09:58 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	material_destroy(t_material *mat)
 {
 	if (!mat)
-		return;
+		return ;
 	free(mat->texture_path);
 	free(mat->bump_map_path);
 	mat->texture_path = NULL;
@@ -45,7 +45,6 @@ void	free_scene(t_scene *scene)
 	free_vector_materials(&scene->planes, offsetof(t_plane, mat));
 	free_vector_materials(&scene->cylinders, offsetof(t_cylinder, mat));
 	free_vector_materials(&scene->cones, offsetof(t_cone, mat));
-
 	vector_free(&scene->lights);
 	vector_free(&scene->spheres);
 	vector_free(&scene->planes);

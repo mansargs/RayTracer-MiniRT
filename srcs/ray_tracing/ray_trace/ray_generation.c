@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:40:39 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/10 18:29:20 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:46:05 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	camera_init_basis(t_camera *cam, int width, int height)
 	cam->half_width = cam->aspect_ratio * cam->half_height;
 }
 
-void	generate_rays(t_camera *cam, t_window *win)
+void	generate_rays(t_scene *scene, t_window *win)
 {
 	t_ray			ray;
 	t_vec3			dir;
@@ -38,26 +38,28 @@ void	generate_rays(t_camera *cam, t_window *win)
 	int				x;
 	int				y;
 
-	camera_init_basis(cam, win->width, win->height);
-	ray.origin = cam->position;
+	camera_init_basis(&scene->camera, win->width, win->height);
+	ray.origin = scene->camera.position;
 	y = -1;
 	while (++y < win->height)
 	{
 		x = -1;
 		while (++x < win->width)
 		{
-			cp.px = (2.0 * (x + 0.5) / win->width - 1.0) * cam->half_width;
-			cp.py = (1.0 - 2.0 * (y + 0.5) / win->height) * cam->half_height;
-			dir = vec_add(cam->forward,
-					vec_add(vec_scale(cam->right, cp.px),
-						vec_scale(cam->up, cp.py)));
+			cp.px = (2.0 * (x + 0.5) / win->width - 1.0)
+				* scene->camera.half_width;
+			cp.py = (1.0 - 2.0 * (y + 0.5) / win->height)
+				* scene->camera.half_height;
+			dir = vec_add(scene->camera.forward,
+					vec_add(vec_scale(scene->camera.right, cp.px),
+						vec_scale(scene->camera.up, cp.py)));
 			ray.direction = vec_normalization(dir);
-			ray_trace(&ray);
+			ray_trace(&ray, scene, win);
 		}
 	}
 }
 
-t_vec3	ray_at(t_ray* ray, double t)
+t_vec3	ray_at(t_ray *ray, double t)
 {
 	return (vec_add(ray->origin, vec_scale(ray->direction, t)));
 }

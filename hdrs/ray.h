@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:38:41 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/10 18:29:35 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/15 17:19:42 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ typedef struct s_camera_pixel
 }			t_camera_pixel;
 
 void	generate_rays(t_camera *cam, t_window *win);
-t_vec3	ray_at(t_ray* ray, double t);
+t_vec3	ray_at(t_ray *ray, double t);
 
 #endif

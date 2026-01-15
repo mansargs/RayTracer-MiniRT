@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 17:51:43 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/12 15:03:51 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/15 15:53:24 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ t_quad	solve_quadratic(t_quad_coeffs coeffs)
 	{
 		result.has_solution = true;
 		sqrt_disc = sqrt(disc);
-		result.t1 = (-coeffs.b - sqrt_disc) / (2.0 *coeffs.a);
-		result.t2 = (-coeffs.b + sqrt_disc) / (2.0 *coeffs.a);
+		result.t1 = (-coeffs.b - sqrt_disc) / (2.0 * coeffs.a);
+		result.t2 = (-coeffs.b + sqrt_disc) / (2.0 * coeffs.a);
 	}
 	return (result);
 }

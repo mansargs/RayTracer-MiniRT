@@ -6,14 +6,14 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:15:53 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/10 18:40:31 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:49:13 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC_MATHS_H
-# define VEC_MATHS_H
+#ifndef VEC_MATH_H
+# define VEC_MATH_H
 
-#include "minirt.h"
+# include "minirt.h"
 
 # define EPS 1e-6
 
