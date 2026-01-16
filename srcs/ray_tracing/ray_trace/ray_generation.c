@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_generation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:40:39 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/15 16:46:05 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/16 23:13:03 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ void	generate_rays(t_scene *scene, t_window *win)
 					vec_add(vec_scale(scene->camera.right, cp.px),
 						vec_scale(scene->camera.up, cp.py)));
 			ray.direction = vec_normalization(dir);
-			ray_trace(&ray, scene, win);
+			ray_trace(&ray, scene, win, x, y);
 		}
 	}
 }
 
-t_vec3	ray_at(t_ray *ray, double t)
+t_vec3	ray_at(const t_ray *ray, double t)
 {
 	return (vec_add(ray->origin, vec_scale(ray->direction, t)));
 }

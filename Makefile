@@ -45,7 +45,7 @@ INCS        = -I hdrs \
               -I $(PARSING_VAL) \
 			  -I $(PARSING_ELEM) \
 			  -I $(PARSING_UTL) \
-			  -I $(DRAWING)/intersection \
+			  -I $(RAY_TRACING)/intersection \
               -I $(LIBFT_DIR) \
               -I $(GNL_DIR) \
               -I $(MLX_DIR)
@@ -75,7 +75,12 @@ SRCS = \
 	$(VEC_MATHS)/vec_arithmetic.c \
 	$(VEC_MATHS)/vec_magnitude.c \
 	$(VEC_MATHS)/vec_normalized.c \
-	$(RAY_TRACING)/ray_generation.c \
+	$(RAY_TRACING)/ray_trace/ray_generation.c \
+	$(RAY_TRACING)/ray_trace/ray_trace.c \
+	$(RAY_TRACING)/intersection/intersection.c \
+	$(RAY_TRACING)/intersection/intersection_spheres.c \
+	$(RAY_TRACING)/intersection/interspection_planes.c \
+	$(RAY_TRACING)/intersection/quadratic.c \
 	$(DRAWING)/window.c
 
 

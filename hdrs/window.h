@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:47:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/15 16:48:36 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/16 23:12:59 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,9 @@ typedef struct s_window
 
 void	cleanup_window(t_window *win);
 int		init_window_params(t_window *win);
+void	put_pixel(t_window *win, int x, int y, int color);
+int		rgb_to_int(int r, int g, int b);
+void	render_image(t_window *win);
+void	start_loop(t_window *win);
 
 #endif

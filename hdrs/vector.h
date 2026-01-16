@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 00:36:58 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 15:02:52 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/16 23:06:31 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@
 bool	vector_init(t_vector *vector, size_t elem_size);
 bool	vector_push_back(t_vector *vector, void *elem);
 void	vector_free(t_vector *vector);
-void	*vector_get(t_vector *vector, size_t index);
+void	*vector_get(const t_vector *vector, size_t index);
 
 #endif

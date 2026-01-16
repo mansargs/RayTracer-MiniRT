@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 00:39:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/08 18:04:41 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/16 23:07:13 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	vector_free(t_vector *vector)
 	vector->elem_size = EMPTY_VEC;
 }
 
-void	*vector_get(t_vector *vector, size_t index)
+void	*vector_get(const t_vector *vector, size_t index)
 {
 	if (index >= vector->size)
 		return (NULL);
