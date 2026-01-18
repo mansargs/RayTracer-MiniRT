@@ -46,6 +46,7 @@ INCS        = -I hdrs \
 			  -I $(PARSING_ELEM) \
 			  -I $(PARSING_UTL) \
 			  -I $(RAY_TRACING)/intersection \
+			  -I $(RAY_TRACING)/phong_reflection \
               -I $(LIBFT_DIR) \
               -I $(GNL_DIR) \
               -I $(MLX_DIR)
@@ -81,6 +82,11 @@ SRCS = \
 	$(RAY_TRACING)/intersection/intersection_spheres.c \
 	$(RAY_TRACING)/intersection/interspection_planes.c \
 	$(RAY_TRACING)/intersection/quadratic.c \
+	$(RAY_TRACING)/phong_reflection/ambient.c \
+	$(RAY_TRACING)/phong_reflection/diffuse.c \
+	$(RAY_TRACING)/phong_reflection/final_color.c \
+	$(RAY_TRACING)/phong_reflection/surface_color.c \
+	$(RAY_TRACING)/phong_reflection/is_in_shadow.c \
 	$(DRAWING)/window.c
 
 

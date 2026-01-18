@@ -6,16 +6,16 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:13:51 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/14 16:25:38 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 01:25:54 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "intersection.h"
-#include "ambient.h"
+#include "phong.h"
 #include "math.h"
 
-t_rgb	compute_ambient(t_hit *hit, t_ambient *ambient)
+t_rgb	compute_ambient(const t_hit *hit, const t_ambient *ambient)
 {
 	t_rgb	result;
 	t_rgb	surface_color;

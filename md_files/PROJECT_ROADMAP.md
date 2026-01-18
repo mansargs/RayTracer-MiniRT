@@ -76,7 +76,7 @@ Parsing (✅ DONE) → Scene Data Structure (✅ DONE) → Ray Tracing (❌ NEED
 - [x] Dot product (`vec_dot_product`)
 - [x] Cross product (`vec_cross_product`)
 - [x] Magnitude calculation (`vec_magnitude`)
-- [x] Normalization (`vec_normalization`)
+- [x] Normalization (`vec_normalize`)
 
 ### 6. **Memory Management** ✅
 - [x] Scene initialization (`init_scene`)

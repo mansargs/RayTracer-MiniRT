@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 16:10:36 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/15 16:21:31 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 01:18:29 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_hit	intersect_plane(const t_ray *ray, const t_plane *plane)
 	hit = (t_hit){0};
 	hit.is_hit = false;
 	hit.t = INFINITY;
-	n = vec_normalization(plane->orientation);
+	n = vec_normalize(plane->orientation);
 	nd = vec_dot(ray->direction, n);
 	if (fabs(nd) < EPS)
 		return (hit);

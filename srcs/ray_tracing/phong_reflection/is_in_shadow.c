@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_math.h                                         :+:      :+:    :+:   */
+/*   is_in_shadow.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 21:15:53 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 01:18:29 by mansargs         ###   ########.fr       */
+/*   Created: 2026/01/19 01:15:48 by mansargs          #+#    #+#             */
+/*   Updated: 2026/01/19 01:24:02 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC_MATH_H
-# define VEC_MATH_H
+#include "phong.h"
+#include "minirt.h"
 
-# include "minirt.h"
+bool	is_in_shadow(t_vec3 point, t_vec3 light_pos, const t_scene *scene)
+{
+	t_vec3	direction;
+	double	distance;
+	t_ray	ray;
+	t_hit	hit;
 
-# define EPS 1e-6
-
-double	vec_magnitude(t_vec3 v);
-t_vec3	vec_normalize(t_vec3 v);
-t_vec3	vec_add(t_vec3 v1, t_vec3 v2);
-t_vec3	vec_sub(t_vec3 v1, t_vec3 v2);
-t_vec3	vec_scale(t_vec3 v1, double scale);
-double	vec_dot(t_vec3 v1, t_vec3 v2);
-t_vec3	vec_cross(t_vec3 v1, t_vec3 v2);
-
-#endif
+	direction = vec_sub(light_pos, point);
+	distance = vec_magnitude(direction);
+	ray.origin = point;
+	ray.direction = vec_normalize(direction);
+	hit = objects_intersection(&ray, scene);
+	return (hit.is_hit && hit.t < distance);
+}

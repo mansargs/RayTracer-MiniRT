@@ -6,13 +6,13 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:21:10 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/15 16:07:17 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 01:18:29 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec_math.h"
 
-t_vec3	vec_normalization(t_vec3 v)
+t_vec3	vec_normalize(t_vec3 v)
 {
 	t_vec3	normalized;
 	double	len;

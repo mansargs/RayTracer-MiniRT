@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ambient_helper.c                                   :+:      :+:    :+:   */
+/*   surface_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:31:42 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/14 16:23:44 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 01:46:33 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "intersection.h"
-#include "ambient.h"
+#include "phong.h"
 
 static t_rgb	sphere_color(void *obj)
 {
