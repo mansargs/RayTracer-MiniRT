@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 01:23:42 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 01:56:12 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 19:37:10 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,22 @@
 #include "phong.h"
 #include "vector.h"
 
+static t_rgb	add_colors(t_rgb color1, t_rgb color2)
+{
+	t_rgb	result;
+
+	result.r = color1.r + color2.r;
+	result.g = color1.g + color2.g;
+	result.b = color1.b + color2.b;
+	return (result);
+}
+
 t_rgb	compute_final_color(const t_hit *hit, const t_scene *scene)
 {
 	t_rgb			final;
 	const t_light	*light;
 	t_rgb			diffuse;
+	t_rgb			specular;
 	size_t			i;
 
 	final = compute_ambient(hit, &scene->ambient);
@@ -29,9 +40,8 @@ t_rgb	compute_final_color(const t_hit *hit, const t_scene *scene)
 		if (!is_in_shadow(hit->point, light->position, scene))
 		{
 			diffuse = diffuse_color(light, hit);
-			final.r += diffuse.r;
-			final.g += diffuse.g;
-			final.b += diffuse.b;
+			specular = compute_specular(light, &scene->camera, hit);
+			final = add_colors(final, add_colors(diffuse, specular));
 		}
 		++i;
 	}

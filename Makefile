@@ -46,7 +46,7 @@ INCS        = -I hdrs \
 			  -I $(PARSING_ELEM) \
 			  -I $(PARSING_UTL) \
 			  -I $(RAY_TRACING)/intersection \
-			  -I $(RAY_TRACING)/phong_reflection \
+			  -I $(RAY_TRACING)/blinn_phong_model \
               -I $(LIBFT_DIR) \
               -I $(GNL_DIR) \
               -I $(MLX_DIR)
@@ -82,11 +82,13 @@ SRCS = \
 	$(RAY_TRACING)/intersection/intersection_spheres.c \
 	$(RAY_TRACING)/intersection/interspection_planes.c \
 	$(RAY_TRACING)/intersection/quadratic.c \
-	$(RAY_TRACING)/phong_reflection/ambient.c \
-	$(RAY_TRACING)/phong_reflection/diffuse.c \
-	$(RAY_TRACING)/phong_reflection/final_color.c \
-	$(RAY_TRACING)/phong_reflection/surface_color.c \
-	$(RAY_TRACING)/phong_reflection/is_in_shadow.c \
+	$(RAY_TRACING)/blinn_phong_model/ambient.c \
+	$(RAY_TRACING)/blinn_phong_model/diffuse.c \
+	$(RAY_TRACING)/blinn_phong_model/final_color.c \
+	$(RAY_TRACING)/blinn_phong_model/surface_color.c \
+	$(RAY_TRACING)/blinn_phong_model/is_in_shadow.c \
+	$(RAY_TRACING)/blinn_phong_model/find_material.c \
+	$(RAY_TRACING)/blinn_phong_model/specular.c \
 	$(DRAWING)/window.c
 
 
