@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 13:49:41 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/15 16:01:28 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 15:53:20 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "libft.h"
 #include "parsing_internal.h"
 #include "vec_math.h"
+#include <stdio.h>
 
 bool	parse_camera(char **attributes, t_camera *camera)
 {

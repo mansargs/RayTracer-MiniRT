@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:39:29 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/15 16:02:51 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:00:28 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,6 @@ static bool	parse_loop(int fd, t_scene *scene)
 	{
 		ft_putendl_fd("File is empty", STDERR_FILENO);
 		return (false);
-	}
-	if (!all_spaces(line))
-	{
-		len = ft_strlen(line);
-		line[len - 1] = '\0';
 	}
 	while (line)
 	{

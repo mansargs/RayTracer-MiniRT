@@ -6,29 +6,28 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:28:33 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/05 19:54:09 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 15:57:53 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "minirt.h"
 #include "vector.h"
 
-// Forward declaration
+// Forward declaration (assuming this exists elsewhere)
 void print_material(t_material *mat)
 {
     if (!mat)
     {
-        printf("      Material: NULL\n");
+        printf(" Material: NULL\n");
         return;
     }
-    printf("      Material:\n");
+    printf(" Material:\n");
     if (mat->has_specular)
-        printf("        Specular: k_s=%.2f, n_s=%d\n", mat->spec.k_s, mat->spec.n_s);
+        printf(" Specular: k_s=%.2f, n_s=%d\n", mat->spec.k_s, mat->spec.n_s);
     if (mat->texture_path)
-        printf("        Texture: %s\n", mat->texture_path);
+        printf(" Texture: %s\n", mat->texture_path);
     if (mat->bump_map_path)
-        printf("        Bump map: %s\n", mat->bump_map_path);
+        printf(" Bump map: %s\n", mat->bump_map_path);
 }
 
 void print_scene(t_scene *scene)
@@ -38,37 +37,36 @@ void print_scene(t_scene *scene)
         printf("Scene: NULL\n");
         return;
     }
-
     printf("Scene:\n");
 
     // Ambient
-    printf("  Ambient: ");
+    printf(" Ambient: ");
     if (scene->ambient.is_set)
-        printf("lighting_ratio=%.2f, color=(%d,%d,%d)\n",
-            scene->ambient.lighting_ratio,
-            scene->ambient.color.r,
-            scene->ambient.color.g,
-            scene->ambient.color.b);
+        printf("lighting_ratio=%.2f, color=(%.0f,%.0f,%.0f)\n",
+               scene->ambient.lighting_ratio,
+               scene->ambient.color.r,
+               scene->ambient.color.g,
+               scene->ambient.color.b);
     else
         printf("NULL\n");
 
     // Camera
-    printf("  Camera: ");
+    printf(" Camera: ");
     if (scene->camera.is_set)
         printf("pos=(%.2f,%.2f,%.2f), dir=(%.2f,%.2f,%.2f), fov=%.2f\n",
-            scene->camera.position.x,
-            scene->camera.position.y,
-            scene->camera.position.z,
-            scene->camera.orientation.x,
-            scene->camera.orientation.y,
-            scene->camera.orientation.z,
-            scene->camera.fov);
+               scene->camera.position.x,
+               scene->camera.position.y,
+               scene->camera.position.z,
+               scene->camera.orientation.x,
+               scene->camera.orientation.y,
+               scene->camera.orientation.z,
+               scene->camera.fov);
     else
         printf("NULL\n");
 
-    // Helper macro for printing vectors
+    // Helper macro for printing object arrays
     #define PRINT_VECTOR(vec, type, print_body) \
-        printf("  %s: ", #vec); \
+        printf(" %s: ", #vec); \
         if ((vec).size == 0) \
             printf("is not\n"); \
         else \
@@ -83,45 +81,52 @@ void print_scene(t_scene *scene)
 
     // Lights
     PRINT_VECTOR(scene->lights, t_light,
-        printf("    Light %zu: pos=(%.2f,%.2f,%.2f), brightness=%.2f, color=(%d,%d,%d)\n",
-            i, obj->position.x, obj->position.y, obj->position.z,
-            obj->brightness, obj->color.r, obj->color.g, obj->color.b));
+        printf(" Light %zu: pos=(%.2f,%.2f,%.2f), brightness=%.2f, color=(%.0f,%.0f,%.0f)\n",
+               i,
+               obj->position.x, obj->position.y, obj->position.z,
+               obj->brightness,
+               obj->color.r, obj->color.g, obj->color.b));
 
     // Spheres
     PRINT_VECTOR(scene->spheres, t_sphere,
-        printf("    Sphere %zu: center=(%.2f,%.2f,%.2f), radius=%.2f, color=(%d,%d,%d), checker=%d\n",
-            i, obj->center.x, obj->center.y, obj->center.z,
-            obj->radius, obj->color.r, obj->color.g, obj->color.b,
-            obj->checkerboard_enabled);
+        printf(" Sphere %zu: center=(%.2f,%.2f,%.2f), radius=%.2f, color=(%.0f,%.0f,%.0f), checker=%d\n",
+               i,
+               obj->center.x, obj->center.y, obj->center.z,
+               obj->radius,
+               obj->color.r, obj->color.g, obj->color.b,
+               obj->checkerboard_enabled);
         print_material(&obj->mat));
 
     // Planes
     PRINT_VECTOR(scene->planes, t_plane,
-        printf("    Plane %zu: pos=(%.2f,%.2f,%.2f), orientation=(%.2f,%.2f,%.2f), color=(%d,%d,%d), checker=%d\n",
-            i, obj->position.x, obj->position.y, obj->position.z,
-            obj->orientation.x, obj->orientation.y, obj->orientation.z,
-            obj->color.r, obj->color.g, obj->color.b,
-            obj->checkerboard_enabled);
+        printf(" Plane %zu: pos=(%.2f,%.2f,%.2f), orientation=(%.2f,%.2f,%.2f), color=(%.0f,%.0f,%.0f), checker=%d\n",
+               i,
+               obj->position.x, obj->position.y, obj->position.z,
+               obj->orientation.x, obj->orientation.y, obj->orientation.z,
+               obj->color.r, obj->color.g, obj->color.b,
+               obj->checkerboard_enabled);
         print_material(&obj->mat));
 
     // Cylinders
     PRINT_VECTOR(scene->cylinders, t_cylinder,
-        printf("    Cylinder %zu: center=(%.2f,%.2f,%.2f), orientation=(%.2f,%.2f,%.2f), radius=%.2f, height=%.2f, color=(%d,%d,%d), checker=%d\n",
-            i, obj->center.x, obj->center.y, obj->center.z,
-            obj->orientation.x, obj->orientation.y, obj->orientation.z,
-            obj->radius, obj->height,
-            obj->color.r, obj->color.g, obj->color.b,
-            obj->checkerboard_enabled);
+        printf(" Cylinder %zu: center=(%.2f,%.2f,%.2f), orientation=(%.2f,%.2f,%.2f), radius=%.2f, height=%.2f, color=(%.0f,%.0f,%.0f), checker=%d\n",
+               i,
+               obj->center.x, obj->center.y, obj->center.z,
+               obj->orientation.x, obj->orientation.y, obj->orientation.z,
+               obj->radius, obj->height,
+               obj->color.r, obj->color.g, obj->color.b,
+               obj->checkerboard_enabled);
         print_material(&obj->mat));
 
     // Cones
     PRINT_VECTOR(scene->cones, t_cone,
-        printf("    Cone %zu: center=(%.2f,%.2f,%.2f), orientation=(%.2f,%.2f,%.2f), height=%.2f, angle=%.2f, color=(%d,%d,%d), checker=%d\n",
-            i, obj->center.x, obj->center.y, obj->center.z,
-            obj->orientation.x, obj->orientation.y, obj->orientation.z,
-            obj->height, obj->angle,
-            obj->color.r, obj->color.g, obj->color.b,
-            obj->checkerboard_enabled);
+        printf(" Cone %zu: center=(%.2f,%.2f,%.2f), orientation=(%.2f,%.2f,%.2f), height=%.2f, angle=%.2f, color=(%.0f,%.0f,%.0f), checker=%d\n",
+               i,
+               obj->center.x, obj->center.y, obj->center.z,
+               obj->orientation.x, obj->orientation.y, obj->orientation.z,
+               obj->height, obj->angle,
+               obj->color.r, obj->color.g, obj->color.b,
+               obj->checkerboard_enabled);
         print_material(&obj->mat));
 
     #undef PRINT_VECTOR
