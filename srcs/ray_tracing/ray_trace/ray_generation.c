@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:40:39 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 01:18:29 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 15:25:43 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	camera_init_basis(t_camera *cam, int width, int height)
 
 	cam->forward = vec_normalize(cam->orientation);
 	world_up = (t_vec3){0.0, 1.0, 0.0};
-	if (vec_dot(cam->forward, world_up) > 0.999)
-		world_up = (t_vec3){1.0, 0.0, 0.0};
+	if (fabs(vec_dot(cam->forward, world_up)) > 0.999)
+		world_up = (t_vec3){0.0, 0.0, 1.0};
 	cam->right = vec_normalize(vec_cross(cam->forward, world_up));
 	cam->up = vec_normalize(vec_cross(cam->right, cam->forward));
 	cam->aspect_ratio = (double)width / (double)height;

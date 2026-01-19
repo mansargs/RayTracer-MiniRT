@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:27:36 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 01:57:41 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 15:26:03 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, int x, int y)
 	else
 	{
 		final = compute_final_color(&nearest, scene);
-		color = rgb_to_int(final.r, final.g, final.b);
+		color = rgb_to_int((int)final.r, (int)final.g, (int)final.b);
 	}
 	put_pixel(win, x, y, color);
 }

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:13:51 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 01:25:54 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 15:27:47 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_rgb	compute_ambient(const t_hit *hit, const t_ambient *ambient)
 
 	result = (t_rgb){0.0, 0.0, 0.0};
 	surface_color = find_surface_color(hit);
-	result.r = surface_color.r * ambient->color.r * ambient->lighting_ratio;
-	result.g = surface_color.g * ambient->color.g * ambient->lighting_ratio;
-	result.b = surface_color.b * ambient->color.b * ambient->lighting_ratio;
+	result.r = (surface_color.r / 255.0) * (ambient->color.r / 255.0) * ambient->lighting_ratio * 255.0;
+	result.g = (surface_color.g / 255.0) * (ambient->color.g / 255.0) * ambient->lighting_ratio * 255.0;
+	result.b = (surface_color.b / 255.0) * (ambient->color.b / 255.0) * ambient->lighting_ratio * 255.0;
 	return (result);
 }
