@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 16:17:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 01:18:29 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 23:50:19 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void	set_sphere_hit(t_hit *hit, double t, const t_ray *ray,
 	hit->point = ray_at(ray, t);
 	center_to_point = vec_sub(hit->point, sphere->center);
 	hit->normal = vec_normalize(center_to_point);
+	if (vec_dot(hit->normal, ray->direction) > 0.0)
+		hit->normal = vec_scale(hit->normal, -1);
 }
 
 static t_hit	sphere_intersection(const t_ray *ray, const t_sphere *sphere)

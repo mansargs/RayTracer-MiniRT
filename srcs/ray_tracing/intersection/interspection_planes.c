@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 16:10:36 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 01:18:29 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/19 23:53:55 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static t_hit	intersect_plane(const t_ray *ray, const t_plane *plane)
 	hit.is_hit = true;
 	hit.t = t;
 	hit.normal = n;
+	if (vec_dot(hit.normal, ray->direction) > 0.0)
+		hit.normal = vec_scale(hit.normal, -1);
 	hit.point = ray_at(ray, t);
 	return (hit);
 }
