@@ -80,6 +80,7 @@ SRCS = \
 	$(RAY_TRACING)/ray_trace/ray_trace.c \
 	$(RAY_TRACING)/intersection/intersection.c \
 	$(RAY_TRACING)/intersection/intersection_spheres.c \
+	$(RAY_TRACING)/intersection/intersection_cylinders.c \
 	$(RAY_TRACING)/intersection/interspection_planes.c \
 	$(RAY_TRACING)/intersection/quadratic.c \
 	$(RAY_TRACING)/blinn_phong_model/ambient.c \

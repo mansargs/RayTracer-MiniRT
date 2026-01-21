@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 17:28:52 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/15 16:23:04 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/21 20:46:20 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,16 @@ typedef struct s_quad_coeffs
 	double	c;
 }			t_quad_coeffs;
 
+typedef struct s_z_limits
+{
+	double	z_min;
+	double	z_max;
+}			t_z_limits;
+
 t_hit	objects_intersection(const t_ray *ray, const t_scene *scene);
 t_hit	intersect_all_spheres(const t_ray *ray, const t_vector *spheres);
 t_hit	intersect_all_planes(const t_ray *ray, const t_vector *planes);
+t_hit	intersect_all_cylinders(const t_ray *ray, const t_vector *cylinders);
 t_quad	solve_quadratic(t_quad_coeffs coeffs);
 double	get_min_positive(double t1, double t2);
 

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:23:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 01:51:21 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/21 20:58:00 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	start_loop(t_window *win)
 
 int	init_window_params(t_window *win)
 {
-	win->width = 800;
-	win->height = 600;
+	win->width = 1400;
+	win->height = 1200;
 	win->mlx = mlx_init();
 	if (!win->mlx)
 		return (ft_putendl_fd("MLX init failed", STDERR_FILENO), MLX_FAILED);
