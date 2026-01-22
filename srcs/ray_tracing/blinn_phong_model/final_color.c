@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 01:23:42 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 13:21:30 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:53:49 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_rgb	compute_final_color(const t_hit *hit, const t_scene *scene)
 		if (!is_in_shadow(hit->point, light->position, scene))
 		{
 			diffuse = diffuse_color(light, hit);
-			specular = compute_specular(light, &scene->camera, hit);
+			specular = compute_specular(light, scene->chosen_cam, hit);
 			final = add_colors(final, add_colors(diffuse, specular));
 		}
 		++i;

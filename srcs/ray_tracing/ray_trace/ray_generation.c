@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:40:39 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 13:18:49 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 15:47:22 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <math.h>
 #include <stdio.h>
 
-void	camera_init_basis(t_camera *cam, int width, int height)
+static void	camera_init_basis(t_camera *cam, int width, int height)
 {
 	t_vec3	world_up;
 
@@ -30,36 +30,53 @@ void	camera_init_basis(t_camera *cam, int width, int height)
 	cam->half_width = cam->aspect_ratio * cam->half_height;
 }
 
-void	generate_rays(t_scene *scene, t_window *win)
-{
-	t_ray			ray;
-	t_vec3			dir;
-	t_camera_pixel	cp;
-	int				x;
-	int				y;
-
-	camera_init_basis(&scene->camera, win->width, win->height);
-	ray.origin = scene->camera.position;
-	y = -1;
-	while (++y < win->height)
-	{
-		x = -1;
-		while (++x < win->width)
-		{
-			cp.px = (2.0 * (x + 0.5) / win->width - 1.0)
-				* scene->camera.half_width;
-			cp.py = (1.0 - 2.0 * (y + 0.5) / win->height)
-				* scene->camera.half_height;
-			dir = vec_add(scene->camera.forward,
-					vec_add(vec_scale(scene->camera.right, cp.px),
-						vec_scale(scene->camera.up, cp.py)));
-			ray.direction = vec_normalize(dir);
-			ray_trace(&ray, scene, win, (int [2]){x, y});
-		}
-	}
-}
-
 t_vec3	ray_at(const t_ray *ray, double t)
 {
 	return (vec_add(ray->origin, vec_scale(ray->direction, t)));
+}
+
+static t_vec3	compute_ray_dir(
+	t_camera *cam,
+	t_camera_pixel *cp)
+{
+	t_vec3	dir;
+
+	dir = vec_add(cam->forward,
+			vec_add(
+				vec_scale(cam->right, cp->px),
+				vec_scale(cam->up, cp->py)));
+	return (vec_normalize(dir));
+}
+
+static void	trace_pixel(t_scene *scene, t_window *win, t_iter iter)
+{
+	t_ray			ray;
+	t_camera_pixel	cp;
+
+	cp.px = (2.0 * (iter.x + 0.5) / win->width - 1.0)
+		* scene->chosen_cam->half_width;
+	cp.py = (1.0 - 2.0 * (iter.y + 0.5) / win->height)
+		* scene->chosen_cam->half_height;
+	ray.origin = scene->chosen_cam->position;
+	ray.direction = compute_ray_dir(scene->chosen_cam, &cp);
+	ray_trace(&ray, scene, win, iter);
+}
+
+void	generate_rays(t_scene *scene, t_window *win)
+{
+	t_iter		iter;
+
+	scene->chosen_cam = chose_camera(scene);
+	camera_init_basis(scene->chosen_cam, win->width, win->height);
+	iter.y = 0;
+	while (iter.y < win->height)
+	{
+		iter.x = 0;
+		while (iter.x < win->width)
+		{
+			trace_pixel(scene, win, iter);
+			iter.x++;
+		}
+		iter.y++;
+	}
 }

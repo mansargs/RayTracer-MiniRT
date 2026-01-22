@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:31:36 by mansargs          #+#    #+#             */
-/*   Updated: 2025/12/15 16:08:14 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:44:29 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "vector.h"
 
 bool	parse_ambient_light(char **attributes, t_ambient *ambient);
-bool	parse_camera(char **attributes, t_camera *camera);
+bool	parse_camera(char **attributes, t_vector *camera);
 bool	parse_cones(char **a, t_vector *cones);
 bool	parse_cylinders(char **a, t_vector *cylinders);
 bool	parse_lights(char **attributes, t_vector *lights);

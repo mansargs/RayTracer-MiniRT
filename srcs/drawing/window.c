@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:23:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 13:24:21 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 15:41:53 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int	init_window_params(t_window *win)
+int	init_window_params(t_window *win, t_scene *scene)
 {
 	win->width = 1000;
 	win->height = 600;
+	win->scene = scene;
+	win->scene->state.camera_idx = 0;
 	win->mlx = mlx_init();
 	if (!win->mlx)
 		return (ft_putendl_fd("MLX init failed", STDERR_FILENO), MLX_FAILED);

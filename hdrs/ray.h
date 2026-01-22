@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:38:41 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 12:35:44 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:29:36 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,14 @@ typedef struct s_camera_pixel
 	double	py;
 }			t_camera_pixel;
 
+typedef struct s_iter
+{
+	int	x;
+	int	y;
+}	t_iter;
+
 void	generate_rays(t_scene *scene, t_window *win);
-void	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, int xy[2]);
+void	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, t_iter pos);
 t_vec3	ray_at(const t_ray *ray, double t);
 
 #endif

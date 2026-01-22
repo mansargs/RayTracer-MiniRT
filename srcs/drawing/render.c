@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering.c                                        :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 13:24:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 13:24:11 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 15:47:06 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
+#include "ray.h"
 
 void	put_pixel(t_window *win, int x, int y, int color)
 {
@@ -27,6 +28,9 @@ static int	handle_keypress(int keycode, t_window *win)
 {
 	if (keycode == KEY_ESC)
 		mlx_loop_end(win->mlx);
+	else if (keycode == KEY_SPACE)
+		win->scene->state.camera_idx = (win->scene->state.camera_idx + 1)
+			% win->scene->camera.size;
 	return (0);
 }
 
@@ -41,9 +45,17 @@ void	render_image(t_window *win)
 	mlx_put_image_to_window(win->mlx, win->mlx_window, win->image.img, 0, 0);
 }
 
+static int	render_loop(t_window *win)
+{
+	generate_rays(win->scene, win);
+	render_image(win);
+	return (0);
+}
+
 void	start_loop(t_window *win)
 {
 	mlx_hook(win->mlx_window, 2, 1L << 0, handle_keypress, win);
 	mlx_hook(win->mlx_window, X_EVENT_DESTROY, 0, handle_destroy, win);
+	mlx_loop_hook(win->mlx, render_loop, win);
 	mlx_loop(win->mlx);
 }

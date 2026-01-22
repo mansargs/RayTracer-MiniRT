@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 12:35:26 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:49:17 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ typedef struct s_ambient
 
 typedef struct s_camera
 {
-	bool	is_set;
 	t_vec3	position;
 	t_vec3	orientation;
 	t_vec3	forward;
@@ -133,15 +132,22 @@ typedef enum e_object
 	CYLINDER
 }			t_object;
 
+typedef struct s_state
+{
+	int	camera_idx;
+}	t_state;
+
 typedef struct s_scene
 {
 	t_ambient	ambient;
-	t_camera	camera;
+	t_vector	camera;
 	t_vector	lights;
 	t_vector	spheres;
 	t_vector	planes;
 	t_vector	cylinders;
 	t_vector	cones;
+	t_state		state;
+	t_camera	*chosen_cam;
 }	t_scene;
 
 #endif

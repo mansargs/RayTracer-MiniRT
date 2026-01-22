@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:11:41 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/15 16:09:58 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:53:00 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void	free_scene(t_scene *scene)
 	vector_free(&scene->planes);
 	vector_free(&scene->cylinders);
 	vector_free(&scene->cones);
+	vector_free(&scene->camera);
 }

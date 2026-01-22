@@ -6,15 +6,21 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:27:36 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 12:37:08 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:45:23 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 #include "phong.h"
+#include "vector.h"
 #include "window.h"
 
-void	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, int xy[2])
+t_camera	*chose_camera(t_scene *scene)
+{
+	return ((t_camera *)vector_get(&scene->camera, scene->state.camera_idx));
+}
+
+void	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, t_iter pos)
 {
 	t_hit	nearest;
 	int		color;
@@ -28,5 +34,5 @@ void	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, int xy[2])
 		final = compute_final_color(&nearest, scene);
 		color = rgb_to_int((int)final.r, (int)final.g, (int)final.b);
 	}
-	put_pixel(win, xy[0], xy[1], color);
+	put_pixel(win, pos.x, pos.y, color);
 }

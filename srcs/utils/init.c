@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:18:24 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/15 16:10:21 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 15:17:39 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 bool	init_scene(t_scene *scene)
 {
 	ft_memset(scene, 0, sizeof(*scene));
+	if (!vector_init(&scene->camera, sizeof(t_camera)))
+		return (false);
 	if (!vector_init(&scene->lights, sizeof(t_light)))
 		return (false);
 	if (!vector_init(&scene->spheres, sizeof(t_sphere)))
