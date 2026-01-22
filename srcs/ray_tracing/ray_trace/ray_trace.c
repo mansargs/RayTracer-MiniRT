@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:27:36 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 17:26:26 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 12:37:08 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "phong.h"
 #include "window.h"
 
-void	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, int x, int y)
+void	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, int xy[2])
 {
 	t_hit	nearest;
 	int		color;
@@ -28,5 +28,5 @@ void	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, int x, int y)
 		final = compute_final_color(&nearest, scene);
 		color = rgb_to_int((int)final.r, (int)final.g, (int)final.b);
 	}
-	put_pixel(win, x, y, color);
+	put_pixel(win, xy[0], xy[1], color);
 }

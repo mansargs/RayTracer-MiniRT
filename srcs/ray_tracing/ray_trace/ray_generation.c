@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:40:39 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 15:25:43 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 13:18:49 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	generate_rays(t_scene *scene, t_window *win)
 					vec_add(vec_scale(scene->camera.right, cp.px),
 						vec_scale(scene->camera.up, cp.py)));
 			ray.direction = vec_normalize(dir);
-			ray_trace(&ray, scene, win, x, y);
+			ray_trace(&ray, scene, win, (int [2]){x, y});
 		}
 	}
 }

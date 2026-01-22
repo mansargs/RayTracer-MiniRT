@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:38:41 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/16 23:13:01 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/01/22 12:35:44 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_camera_pixel
 }			t_camera_pixel;
 
 void	generate_rays(t_scene *scene, t_window *win);
-void	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, int x, int y);
+void	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, int xy[2]);
 t_vec3	ray_at(const t_ray *ray, double t);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 01:23:42 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 19:37:10 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 13:21:30 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,23 @@ static t_rgb	add_colors(t_rgb color1, t_rgb color2)
 	result.g = color1.g + color2.g;
 	result.b = color1.b + color2.b;
 	return (result);
+}
+
+int	rgb_to_int(int r, int g, int b)
+{
+	if (r > 255)
+		r = 255;
+	if (g > 255)
+		g = 255;
+	if (b > 255)
+		b = 255;
+	if (r < 0)
+		r = 0;
+	if (g < 0)
+		g = 0;
+	if (b < 0)
+		b = 0;
+	return ((r << 16) | (g << 8) | b);
 }
 
 t_rgb	compute_final_color(const t_hit *hit, const t_scene *scene)

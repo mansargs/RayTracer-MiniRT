@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 16:10:36 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 23:53:55 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/22 12:29:49 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,13 @@ static t_hit	intersect_plane(const t_ray *ray, const t_plane *plane)
 {
 	t_hit	hit;
 	t_vec3	n;
-	double	nd;
 	double	t;
 
 	hit = (t_hit){0};
 	hit.is_hit = false;
 	hit.t = INFINITY;
 	n = vec_normalize(plane->orientation);
-	nd = vec_dot(ray->direction, n);
-	if (fabs(nd) < EPS)
-		return (hit);
-	t = vec_dot(n, vec_sub(plane->position, ray->origin)) / nd;
+	t = plane_intersection_formula(ray, plane->position, n);
 	if (t < EPS)
 		return (hit);
 	hit.is_hit = true;

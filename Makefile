@@ -82,7 +82,7 @@ SRCS = \
 	$(RAY_TRACING)/intersection/intersection_spheres.c \
 	$(RAY_TRACING)/intersection/intersection_cylinders.c \
 	$(RAY_TRACING)/intersection/interspection_planes.c \
-	$(RAY_TRACING)/intersection/quadratic.c \
+	$(RAY_TRACING)/intersection/helper.c \
 	$(RAY_TRACING)/blinn_phong_model/ambient.c \
 	$(RAY_TRACING)/blinn_phong_model/diffuse.c \
 	$(RAY_TRACING)/blinn_phong_model/final_color.c \
@@ -90,7 +90,7 @@ SRCS = \
 	$(RAY_TRACING)/blinn_phong_model/is_in_shadow.c \
 	$(RAY_TRACING)/blinn_phong_model/find_material.c \
 	$(RAY_TRACING)/blinn_phong_model/specular.c \
-	$(DRAWING)/window.c
+	$(DRAWING)/window.c $(DRAWING)/render.c
 
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
