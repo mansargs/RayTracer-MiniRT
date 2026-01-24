@@ -1,8 +1,8 @@
 # MiniRT Team Task Assignments - Quick Reference
 
 ## DEVELOPER 1: Ray Tracing Engine
-**Responsibility**: Core rendering pipeline (rays, intersections, lighting)  
-**Start Date**: Immediately  
+**Responsibility**: Core rendering pipeline (rays, intersections, lighting)
+**Start Date**: Immediately
 **Duration**: 2-3 weeks
 
 ### TASKS IN ORDER (Do NOT skip steps):
@@ -129,8 +129,8 @@ After you complete TASK 2.1, Dev2 can hook up display.
 ---
 
 ## DEVELOPER 2: Features, Texturing & Display
-**Responsibility**: Advanced features, rendering to window, event handling  
-**Start Date**: After Week 1.5 (when Dev1 reaches Task 1.6)  
+**Responsibility**: Advanced features, rendering to window, event handling
+**Start Date**: After Week 1.5 (when Dev1 reaches Task 1.6)
 **Duration**: 2-3 weeks
 
 ### PREPARATION (While Dev1 works on core):
@@ -174,7 +174,7 @@ After you complete TASK 2.1, Dev2 can hook up display.
 □ TASK 3.1: Checkerboard Patterns [1.5-2h]
   └─ Modify: srcs/rendering/lighting.c (in calculate_color)
   └─ Logic:
-     • IF object.checkerboard_enabled:
+     • IF object.checkerboard:
        • pattern = (int)hit.point.x/scale XOR (int)hit.point.y/scale
        • IF pattern & 1: swap colors or darken
   └─ Test: Checkerboard sphere/plane

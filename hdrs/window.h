@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:47:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 15:41:46 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/24 15:55:49 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define KEY_ESC 65307
 # define X_EVENT_DESTROY 17
 # define KEY_SPACE 32
+#define MOUSE_LEFT   1
+#define MOUSE_RIGHT  3
 
 typedef struct s_data
 {

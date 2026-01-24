@@ -90,7 +90,7 @@ SRCS = \
 	$(RAY_TRACING)/blinn_phong_model/is_in_shadow.c \
 	$(RAY_TRACING)/blinn_phong_model/find_material.c \
 	$(RAY_TRACING)/blinn_phong_model/specular.c \
-	$(DRAWING)/window.c $(DRAWING)/render.c
+	$(DRAWING)/window.c $(DRAWING)/render.c $(DRAWING)/checkerboard_on_off.c
 
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

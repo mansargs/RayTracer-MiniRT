@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:39:29 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 15:03:40 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/24 14:32:09 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static bool	parse_line(char *line, t_scene *scene, size_t *len)
 	bool	ret_value;
 
 	ret_value = true;
-	if (all_spaces(line))
+	if (all_spaces(line) || line[0] == '#')
 		return (true);
 	*len = ft_strlen(line);
 	line[*len - 1] = '\0';
@@ -105,7 +105,7 @@ bool	parse_file(const char *path, t_scene *scene)
 			|| scene->lights.size == 0) && ret == true)
 	{
 		ret = false;
-		print_error("File must have 1 camera, 1 ambient and light(s)");
+		print_error("File must have camera(s), ambient light and light(s)");
 	}
 	return (ret);
 }

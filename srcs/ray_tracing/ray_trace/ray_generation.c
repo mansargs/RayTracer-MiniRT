@@ -6,12 +6,13 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:40:39 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 15:47:22 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/24 15:26:21 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
 #include "vec_math.h"
+#include "intersection.h"
 #include <math.h>
 #include <stdio.h>
 
@@ -48,7 +49,7 @@ static t_vec3	compute_ray_dir(
 	return (vec_normalize(dir));
 }
 
-static void	trace_pixel(t_scene *scene, t_window *win, t_iter iter)
+t_hit	trace_pixel(t_scene *scene, t_window *win, t_iter iter)
 {
 	t_ray			ray;
 	t_camera_pixel	cp;
@@ -59,7 +60,7 @@ static void	trace_pixel(t_scene *scene, t_window *win, t_iter iter)
 		* scene->chosen_cam->half_height;
 	ray.origin = scene->chosen_cam->position;
 	ray.direction = compute_ray_dir(scene->chosen_cam, &cp);
-	ray_trace(&ray, scene, win, iter);
+	return (ray_trace(&ray, scene, win, iter));
 }
 
 void	generate_rays(t_scene *scene, t_window *win)

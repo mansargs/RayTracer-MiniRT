@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 14:49:17 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/24 16:05:25 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct s_sphere
 	t_vec3		center;
 	double		radius;
 	t_rgb		color;
-	bool		checkerboard_enabled;
+	bool		checkerboard;
 	t_material	mat;
 }	t_sphere;
 
@@ -97,7 +97,7 @@ typedef struct s_plane
 	t_vec3		position;
 	t_vec3		orientation;
 	t_rgb		color;
-	bool		checkerboard_enabled;
+	bool		checkerboard;
 	t_material	mat;
 }	t_plane;
 
@@ -108,7 +108,7 @@ typedef struct s_cylinder
 	double		radius;
 	double		height;
 	t_rgb		color;
-	bool		checkerboard_enabled;
+	bool		checkerboard;
 	t_material	mat;
 }	t_cylinder;
 
@@ -119,18 +119,18 @@ typedef struct s_cone
 	double		height;
 	double		angle;
 	t_rgb		color;
-	bool		checkerboard_enabled;
+	bool		checkerboard;
 	t_material	mat;
 }	t_cone;
 
-typedef enum e_object
-{
-	NO_OBJECT = 0,
-	SPHERE,
-	PLANE,
-	CONE,
-	CYLINDER
-}			t_object;
+	typedef enum e_object
+	{
+		NO_OBJECT = 0,
+		SPHERE,
+		PLANE,
+		CONE,
+		CYLINDER
+	}			t_object;
 
 typedef struct s_state
 {

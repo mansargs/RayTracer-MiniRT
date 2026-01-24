@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:38:41 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 14:29:36 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/24 16:02:11 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include "minirt.h"
 # include "window.h"
+
+typedef struct s_hit	t_hit;
+
+typedef void	(*t_checkerboard_fn)(void *, bool);
 
 typedef struct s_ray
 {
@@ -35,7 +39,9 @@ typedef struct s_iter
 }	t_iter;
 
 void	generate_rays(t_scene *scene, t_window *win);
-void	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, t_iter pos);
+t_hit	trace_pixel(t_scene *scene, t_window *win, t_iter iter);
+t_hit	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, t_iter pos);
 t_vec3	ray_at(const t_ray *ray, double t);
+void	checkerboard_on_off(t_hit *nearest, int button);
 
 #endif

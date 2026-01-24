@@ -6,12 +6,13 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 13:24:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 15:47:06 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/24 16:02:23 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
 #include "ray.h"
+#include "intersection.h"
 
 void	put_pixel(t_window *win, int x, int y, int color)
 {
@@ -52,10 +53,23 @@ static int	render_loop(t_window *win)
 	return (0);
 }
 
+static int	mouse_handler(int button, int x, int y, void *param)
+{
+	t_window	*win;
+	t_hit		nearest;
+
+	win = (t_window *)param;
+	nearest = trace_pixel(win->scene, win, (t_iter){.x = x, .y = y});
+	if (nearest.is_hit)
+		checkerboard_on_off(&nearest, button);
+	return (0);
+}
+
 void	start_loop(t_window *win)
 {
 	mlx_hook(win->mlx_window, 2, 1L << 0, handle_keypress, win);
 	mlx_hook(win->mlx_window, X_EVENT_DESTROY, 0, handle_destroy, win);
 	mlx_loop_hook(win->mlx, render_loop, win);
+	mlx_mouse_hook(win->mlx_window, mouse_handler, win);
 	mlx_loop(win->mlx);
 }

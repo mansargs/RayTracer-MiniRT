@@ -285,7 +285,7 @@ where Kd = surface diffusivity, I = light intensity
 **Estimated Time**: 1.5-2 hours
 
 **Subtasks**:
-- [ ] Check `checkerboard_enabled` flag
+- [ ] Check `checkerboard` flag
 - [ ] If enabled: determine checkerboard pattern using hit point coordinates
 - [ ] Alternate colors based on pattern
 
