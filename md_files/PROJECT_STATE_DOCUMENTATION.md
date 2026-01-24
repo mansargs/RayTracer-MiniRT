@@ -1,6 +1,6 @@
 # MiniRT Ray Tracer - Complete Project State Documentation
 
-**Last Updated**: January 22, 2026  
+**Last Updated**: January 22, 2026
 **Status**: ~85-90% Complete - Fully Functional Ray Tracer Rendering Live Scenes
 
 ---
@@ -207,17 +207,17 @@ Located in: `srcs/ray_tracing/intersection/`
 Algorithm:
   Ray: P(t) = origin + t*direction
   Sphere: |P - center| = radius
-  
+
   Substitute ray into sphere equation:
   |origin + t*direction - center|² = radius²
-  
+
   Expand to quadratic: at² + bt + c = 0
-  
+
   Where:
     a = direction·direction
     b = 2(origin-center)·direction
     c = |origin-center|² - radius²
-  
+
   Solutions: t1, t2 (positive t means forward)
   Take smallest positive t
   Normal = (point - center) normalized
@@ -228,11 +228,11 @@ Algorithm:
 Algorithm:
   Ray: P(t) = origin + t*direction
   Plane: (P - point)·normal = 0
-  
+
   Substitute:
   (origin + t*direction - point)·normal = 0
   t = ((point - origin)·normal) / (direction·normal)
-  
+
   Check: direction not parallel to plane (denom ≠ 0)
   Check: t > 0 (intersection is forward)
 ```
@@ -262,14 +262,14 @@ Located in: `srcs/ray_tracing/blinn_phong_model/`
 
 ```
 Final Color = Ambient + ∑(for each light)
-              
+
 Where:
   Ambient = ambient_brightness × ambient_color × object_color
-  
-  Diffuse = light_brightness × max(0, normal·light_direction) 
+
+  Diffuse = light_brightness × max(0, normal·light_direction)
             × object_color
-  
-  Specular = light_brightness × material.shininess 
+
+  Specular = light_brightness × material.shininess
              × max(0, reflection·view)^material.power
              × light_color
 ```

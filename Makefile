@@ -78,6 +78,7 @@ SRCS = \
 	$(VEC_MATHS)/vec_normalized.c \
 	$(RAY_TRACING)/ray_trace/ray_generation.c \
 	$(RAY_TRACING)/ray_trace/ray_trace.c \
+	$(RAY_TRACING)/ray_trace/checkerboard.c \
 	$(RAY_TRACING)/intersection/intersection.c \
 	$(RAY_TRACING)/intersection/intersection_spheres.c \
 	$(RAY_TRACING)/intersection/intersection_cylinders.c \

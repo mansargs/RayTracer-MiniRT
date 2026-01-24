@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:38:41 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/24 16:02:11 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/25 01:14:14 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ t_hit	trace_pixel(t_scene *scene, t_window *win, t_iter iter);
 t_hit	ray_trace(const t_ray *ray, t_scene *scene, t_window *win, t_iter pos);
 t_vec3	ray_at(const t_ray *ray, double t);
 void	checkerboard_on_off(t_hit *nearest, int button);
+int		get_checker_pattern(const t_hit *hit);
 
 #endif
