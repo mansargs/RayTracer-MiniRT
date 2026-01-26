@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 13:24:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/24 16:02:23 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/27 00:10:29 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
 #include "ray.h"
 #include "intersection.h"
+#include <stdio.h>
 
 void	put_pixel(t_window *win, int x, int y, int color)
 {
@@ -32,6 +33,18 @@ static int	handle_keypress(int keycode, t_window *win)
 	else if (keycode == KEY_SPACE)
 		win->scene->state.camera_idx = (win->scene->state.camera_idx + 1)
 			% win->scene->camera.size;
+	else if (keycode == KEY_W)
+		win->scene->chosen_cam->position = vec_sub(win->scene->chosen_cam->position,
+			vec_scale(win->scene->chosen_cam->forward, MOVE_SPEED));
+	else if (keycode == KEY_A)
+		win->scene->chosen_cam->position = vec_sub(win->scene->chosen_cam->position,
+			vec_scale(win->scene->chosen_cam->right, MOVE_SPEED));
+	else if (keycode == KEY_S)
+		win->scene->chosen_cam->position = vec_add(win->scene->chosen_cam->position,
+			vec_scale(win->scene->chosen_cam->forward, MOVE_SPEED));
+	else if (keycode == KEY_D)
+		win->scene->chosen_cam->position = vec_add(win->scene->chosen_cam->position,
+			vec_scale(win->scene->chosen_cam->right, MOVE_SPEED));
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 15:33:02 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/21 20:46:47 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/26 23:45:36 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_hit	objects_intersection(const t_ray *ray, const t_scene *scene)
 	hit = intersect_all_spheres(ray, &scene->spheres);
 	update_nearest(&nearest, &hit);
 	hit = intersect_all_cylinders(ray, &scene->cylinders);
+	update_nearest(&nearest, &hit);
+	hit = intersect_all_cones(ray, &scene->cones);
 	update_nearest(&nearest, &hit);
 	return (nearest);
 }

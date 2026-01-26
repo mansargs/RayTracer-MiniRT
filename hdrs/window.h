@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:47:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/25 00:20:54 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/27 00:05:43 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,14 @@
 # define KEY_ESC 65307
 # define X_EVENT_DESTROY 17
 # define KEY_SPACE 32
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
 # define MOUSE_LEFT   1
 # define MOUSE_RIGHT  3
 # define CHECKERBOARD_SCALE 10
+# define MOVE_SPEED 0.6
 
 typedef struct s_data
 {
