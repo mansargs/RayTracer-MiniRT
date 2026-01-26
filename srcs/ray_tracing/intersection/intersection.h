@@ -6,7 +6,7 @@
 /*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 17:28:52 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/26 23:55:34 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/01/27 00:25:54 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 # include "vec_math.h"
 # include "ray.h"
 # include "minirt.h"
+
+#define NUM_THREADS 8
+
+typedef struct s_thread_data
+{
+	t_scene		*scene;
+	t_window	*win;
+	int			start_y;
+	int			end_y;
+}	t_thread_data;
 
 typedef struct s_hit
 {

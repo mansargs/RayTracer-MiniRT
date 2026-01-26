@@ -51,7 +51,7 @@ INCS        = -I hdrs \
               -I $(GNL_DIR) \
               -I $(MLX_DIR)
 
-MLX_FLAGS = -lX11 -lXext -lm
+MLX_FLAGS = -lX11 -lXext -lm -lpthread
 
 # =============================
 #         SOURCE FILES

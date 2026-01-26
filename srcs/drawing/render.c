@@ -6,7 +6,7 @@
 /*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 13:24:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/27 00:10:29 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/01/27 00:22:49 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ray.h"
 #include "intersection.h"
 #include <stdio.h>
+#include <math.h>
 
 void	put_pixel(t_window *win, int x, int y, int color)
 {
@@ -24,6 +25,42 @@ void	put_pixel(t_window *win, int x, int y, int color)
 	dst = win->image.addr + (y * win->image.line_length
 			+ x * (win->image.bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+}
+
+static t_vec3	rotate_around_axis(t_vec3 v, t_vec3 axis, double angle)
+{
+	double	c;
+	double	s;
+	t_vec3	result;
+
+	c = cos(angle);
+	s = sin(angle);
+	result.x = v.x * (c + axis.x * axis.x * (1 - c))
+		+ v.y * (axis.x * axis.y * (1 - c) - axis.z * s)
+		+ v.z * (axis.x * axis.z * (1 - c) + axis.y * s);
+	result.y = v.x * (axis.y * axis.x * (1 - c) + axis.z * s)
+		+ v.y * (c + axis.y * axis.y * (1 - c))
+		+ v.z * (axis.y * axis.z * (1 - c) - axis.x * s);
+	result.z = v.x * (axis.z * axis.x * (1 - c) - axis.y * s)
+		+ v.y * (axis.z * axis.y * (1 - c) + axis.x * s)
+		+ v.z * (c + axis.z * axis.z * (1 - c));
+	return (result);
+}
+
+static void	rotate_camera(t_camera *cam, int keycode)
+{
+	t_vec3	world_up;
+
+	world_up = (t_vec3){0.0, 1.0, 0.0};
+	if (keycode == KEY_LEFT)
+		cam->orientation = rotate_around_axis(cam->orientation, world_up, ROT_SPEED);
+	else if (keycode == KEY_RIGHT)
+		cam->orientation = rotate_around_axis(cam->orientation, world_up, -ROT_SPEED);
+	else if (keycode == KEY_UP)
+		cam->orientation = rotate_around_axis(cam->orientation, cam->right, ROT_SPEED);
+	else if (keycode == KEY_DOWN)
+		cam->orientation = rotate_around_axis(cam->orientation, cam->right, -ROT_SPEED);
+	cam->orientation = vec_normalize(cam->orientation);
 }
 
 static int	handle_keypress(int keycode, t_window *win)
@@ -45,6 +82,9 @@ static int	handle_keypress(int keycode, t_window *win)
 	else if (keycode == KEY_D)
 		win->scene->chosen_cam->position = vec_add(win->scene->chosen_cam->position,
 			vec_scale(win->scene->chosen_cam->right, MOVE_SPEED));
+	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT
+		|| keycode == KEY_UP || keycode == KEY_DOWN)
+		rotate_camera(win->scene->chosen_cam, keycode);
 	return (0);
 }
 

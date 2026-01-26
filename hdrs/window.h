@@ -6,7 +6,7 @@
 /*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:47:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/27 00:05:43 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/01/27 00:19:30 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,15 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+# define KEY_LEFT 65361
+# define KEY_UP 65362
+# define KEY_RIGHT 65363
+# define KEY_DOWN 65364
 # define MOUSE_LEFT   1
 # define MOUSE_RIGHT  3
 # define CHECKERBOARD_SCALE 10
 # define MOVE_SPEED 0.6
+# define ROT_SPEED 0.05
 
 typedef struct s_data
 {
