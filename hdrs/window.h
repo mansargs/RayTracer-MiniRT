@@ -6,7 +6,7 @@
 /*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:47:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/27 00:19:30 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/01/27 01:33:42 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define CHECKERBOARD_SCALE 10
 # define MOVE_SPEED 0.6
 # define ROT_SPEED 0.05
+# define BUMP_STRENGHT 10.0
 
 typedef struct s_data
 {

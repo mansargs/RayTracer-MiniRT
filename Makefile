@@ -47,6 +47,7 @@ INCS        = -I hdrs \
 			  -I $(PARSING_UTL) \
 			  -I $(RAY_TRACING)/intersection \
 			  -I $(RAY_TRACING)/blinn_phong_model \
+			  -I $(RAY_TRACING)/textures \
               -I $(LIBFT_DIR) \
               -I $(GNL_DIR) \
               -I $(MLX_DIR)
@@ -92,6 +93,12 @@ SRCS = \
 	$(RAY_TRACING)/blinn_phong_model/is_in_shadow.c \
 	$(RAY_TRACING)/blinn_phong_model/find_material.c \
 	$(RAY_TRACING)/blinn_phong_model/specular.c \
+	$(RAY_TRACING)/textures/loader.c \
+	$(RAY_TRACING)/textures/uv_mapping.c \
+	$(RAY_TRACING)/textures/bump.c \
+	$(RAY_TRACING)/textures/normal.c \
+	$(RAY_TRACING)/textures/texture_color.c \
+	$(RAY_TRACING)/textures/load_scene.c \
 	$(DRAWING)/window.c $(DRAWING)/render.c $(DRAWING)/checkerboard_on_off.c
 
 

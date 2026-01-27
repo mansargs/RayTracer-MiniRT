@@ -6,7 +6,7 @@
 /*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 13:24:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/27 00:22:49 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/01/27 00:38:17 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ static int	handle_keypress(int keycode, t_window *win)
 	else if (keycode == KEY_SPACE)
 		win->scene->state.camera_idx = (win->scene->state.camera_idx + 1)
 			% win->scene->camera.size;
-	else if (keycode == KEY_W)
+	else if (keycode == KEY_S)
 		win->scene->chosen_cam->position = vec_sub(win->scene->chosen_cam->position,
 			vec_scale(win->scene->chosen_cam->forward, MOVE_SPEED));
 	else if (keycode == KEY_A)
 		win->scene->chosen_cam->position = vec_sub(win->scene->chosen_cam->position,
 			vec_scale(win->scene->chosen_cam->right, MOVE_SPEED));
-	else if (keycode == KEY_S)
+	else if (keycode == KEY_W)
 		win->scene->chosen_cam->position = vec_add(win->scene->chosen_cam->position,
 			vec_scale(win->scene->chosen_cam->forward, MOVE_SPEED));
 	else if (keycode == KEY_D)

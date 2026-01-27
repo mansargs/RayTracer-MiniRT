@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/24 16:05:25 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/27 01:32:21 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,26 @@ typedef struct s_specular
 	int		n_s;
 }	t_specular;
 
+typedef struct s_loaded_tex
+{
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	bool	loaded;
+}	t_loaded_tex;
+
 typedef struct s_material
 {
-	t_specular	spec;
-	bool		has_specular;
-	char		*texture_path;
-	char		*bump_map_path;
+	t_specular		spec;
+	bool			has_specular;
+	char			*texture_path;
+	char			*bump_map_path;
+	t_loaded_tex	color_tex;
+	t_loaded_tex	bump_tex;
 }	t_material;
 
 typedef struct s_ambient

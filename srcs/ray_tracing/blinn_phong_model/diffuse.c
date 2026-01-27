@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   diffuse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 17:36:16 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 12:47:30 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/27 15:11:14 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "phong.h"
 #include "intersection.h"
+#include "texture.h"
 
 t_rgb	diffuse_color(const t_light *light, const t_hit *hit)
 {
@@ -20,13 +21,15 @@ t_rgb	diffuse_color(const t_light *light, const t_hit *hit)
 	double	distance;
 	double	cos_theta;
 	t_rgb	diffuse;
+	t_vec3	normal;
 
 	to_light = vec_sub(light->position, hit->point);
 	distance = vec_magnitude(to_light);
 	if (distance < EPS)
 		return ((t_rgb){0, 0, 0});
 	to_light = vec_scale(to_light, 1.0 / distance);
-	cos_theta = vec_dot(hit->normal, to_light);
+	normal = get_normal(hit);
+	cos_theta = vec_dot(normal, to_light);
 	if (cos_theta <= 0.0)
 		return ((t_rgb){0, 0, 0});
 	diffuse = find_surface_color(hit);

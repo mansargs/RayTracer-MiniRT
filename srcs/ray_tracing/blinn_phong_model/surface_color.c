@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   surface_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:31:42 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/19 01:46:33 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/27 15:11:48 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "intersection.h"
 #include "phong.h"
+#include "texture.h"
 
 static t_rgb	sphere_color(void *obj)
 {
@@ -42,9 +43,13 @@ t_rgb	find_surface_color(const t_hit *hit)
 	[CYLINDER] = cyl_color,
 	[CONE] = cone_color,
 	};
+	t_rgb						tex_color;
 
 	if (!hit || !hit->is_hit || !hit->object)
 		return ((t_rgb){0.0, 0.0, 0.0});
+	tex_color = get_tex_color(hit);
+	if (tex_color.r >= 0)
+		return (tex_color);
 	if (hit->type >= 1 && hit->type < (int)(sizeof(table) / sizeof(table[0])))
 		if (table[hit->type])
 			return (table[hit->type](hit->object));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:27:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 15:36:32 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/01/27 15:11:02 by noavetis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include "window.h"
 #include "mlx.h"
 #include "ray.h"
+#include "texture.h"
 
 int	main(int argc, char *argv[])
 {
@@ -33,6 +34,7 @@ int	main(int argc, char *argv[])
 	if (!parse_file(argv[1], &scene))
 		return (free_scene(&scene), EXIT_FAILURE);
 	init_window_params(&window, &scene);
+	load_scene(window.mlx, &scene);
 	generate_rays(&scene, &window);
 	render_image(&window);
 	start_loop(&window);
