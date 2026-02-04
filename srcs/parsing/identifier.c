@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:39:29 by mansargs          #+#    #+#             */
-/*   Updated: 2026/02/04 17:16:41 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/04 19:13:14 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,7 @@ bool	parse_file(const char *path, t_scene *scene)
 		ret = false;
 		print_error("File must have camera(s), ambient light and light(s)");
 	}
+	if (ret == false)
+		get_next_line(-1);
 	return (ret);
 }
