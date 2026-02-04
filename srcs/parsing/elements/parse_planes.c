@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:36:38 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/15 16:01:55 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:11:21 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "parsing_utils.h"
 #include "validation.h"
 #include "libft.h"
+#include "window.h"
 #include "parsing_internal.h"
 #include "vec_math.h"
 
@@ -33,7 +34,7 @@ static bool	parse_plane_core(char **attr, t_plane *p)
 	return (true);
 }
 
-bool	parse_planes(char **attr, t_vector *planes)
+bool	parse_planes(const t_window *win, char **attr, t_vector *planes)
 {
 	t_plane	item;
 	size_t	len;
@@ -46,7 +47,7 @@ bool	parse_planes(char **attr, t_vector *planes)
 	if (!parse_plane_core(attr, &item))
 		return (false);
 	if (!parse_optional_data(attr + 4, &item.mat, len - 4))
-		return (material_destroy(&item.mat), false);
+		return (material_destroy(win->mlx, &item.mat), false);
 	if (!vector_push_back(planes, &item))
 		return (print_error("Memory allocation problem"), false);
 	return (true);

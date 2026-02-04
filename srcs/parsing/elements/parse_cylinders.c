@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:07:35 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/10 18:40:56 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:11:47 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "parsing_utils.h"
 #include "validation.h"
 #include "libft.h"
+#include "window.h"
 #include "parsing_internal.h"
 #include "vec_math.h"
 
@@ -41,7 +42,7 @@ static bool	parse_cylinder_core(char **a, t_cylinder *c)
 	return (true);
 }
 
-bool	parse_cylinders(char **a, t_vector *cylinders)
+bool	parse_cylinders(const t_window *win, char **a, t_vector *cylinders)
 {
 	t_cylinder	item;
 	size_t		len;
@@ -54,7 +55,7 @@ bool	parse_cylinders(char **a, t_vector *cylinders)
 	if (!parse_cylinder_core(a, &item))
 		return (false);
 	if (!parse_optional_data(a + 6, &item.mat, len - 6))
-		return (material_destroy(&item.mat), false);
+		return (material_destroy(win->mlx, &item.mat), false);
 	if (!vector_push_back(cylinders, &item))
 		return (print_error("Memory allocation problem"), false);
 	return (true);

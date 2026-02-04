@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:39:29 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/24 14:32:09 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:16:41 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static bool	parse_based_on_type(char **attributes, t_scene *scene)
 	else if (ft_strcmp(attributes[0], "L") == 0)
 		return (parse_lights(attributes, &scene->lights));
 	else if (ft_strcmp(attributes[0], "sp") == 0)
-		return (parse_spheres(attributes, &scene->spheres));
+		return (parse_spheres(scene->win, attributes, &scene->spheres));
 	else if (ft_strcmp(attributes[0], "pl") == 0)
-		return (parse_planes(attributes, &scene->planes));
+		return (parse_planes(scene->win, attributes, &scene->planes));
 	else if (ft_strcmp(attributes[0], "cy") == 0)
-		return (parse_cylinders(attributes, &scene->cylinders));
+		return (parse_cylinders(scene->win, attributes, &scene->cylinders));
 	else if (ft_strcmp(attributes[0], "co") == 0)
-		return (parse_cones(attributes, &scene->cones));
+		return (parse_cones(scene->win, attributes, &scene->cones));
 	else
 	{
 		ft_putendl_fd("Unknown identifier", STDERR_FILENO);
@@ -49,7 +49,8 @@ static bool	parse_line(char *line, t_scene *scene, size_t *len)
 	if (all_spaces(line) || line[0] == '#')
 		return (true);
 	*len = ft_strlen(line);
-	line[*len - 1] = '\0';
+	if (line[*len -1] == '\n')
+		line[*len - 1] = '\0';
 	attributes = ft_split(line, ' ');
 	if (!attributes)
 	{

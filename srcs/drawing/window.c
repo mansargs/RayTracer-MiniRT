@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:23:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/22 15:41:53 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:26:32 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	init_window_params(t_window *win, t_scene *scene)
 	win->image.addr = mlx_get_data_addr(win->image.img,
 			&win->image.bits_per_pixel, &win->image.line_length,
 			&win->image.endian);
+	scene->win = win;
 	return (MLX_SUCCESS);
 }
 

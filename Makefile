@@ -15,7 +15,7 @@ CYAN    := \033[36m
 # =============================
 NAME        = miniRT
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra -Werror -g3 -fsanitize=address
 RM          = rm -f
 
 SRC_DIR     = srcs

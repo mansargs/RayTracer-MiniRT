@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/27 01:32:21 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:04:32 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stddef.h>
 # include <stdbool.h>
+
+typedef struct s_window	t_window;
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
@@ -68,6 +70,7 @@ typedef struct s_material
 	char			*bump_map_path;
 	t_loaded_tex	color_tex;
 	t_loaded_tex	bump_tex;
+	void			*mlx;
 }	t_material;
 
 typedef struct s_ambient
@@ -161,6 +164,7 @@ typedef struct s_scene
 	t_vector	cylinders;
 	t_vector	cones;
 	t_state		state;
+	t_window	*win;
 	t_camera	*chosen_cam;
 }	t_scene;
 

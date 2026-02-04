@@ -6,13 +6,14 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 14:31:24 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/10 18:40:56 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:10:25 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "parsing_utils.h"
 #include "validation.h"
+#include "window.h"
 #include "libft.h"
 #include "parsing_internal.h"
 #include "vec_math.h"
@@ -40,7 +41,7 @@ static bool	parse_cone_core(char **a, t_cone *c)
 	return (true);
 }
 
-bool	parse_cones(char **a, t_vector *cones)
+bool	parse_cones(const t_window *win, char **a, t_vector *cones)
 {
 	t_cone	item;
 	size_t	len;
@@ -53,7 +54,7 @@ bool	parse_cones(char **a, t_vector *cones)
 	if (!parse_cone_core(a, &item))
 		return (false);
 	if (!parse_optional_data(a + 6, &item.mat, len - 6))
-		return (material_destroy(&item.mat), false);
+		return (material_destroy(win->mlx, &item.mat), false);
 	if (!vector_push_back(cones, &item))
 		return (print_error("Memory allocation problem"), false);
 	return (true);
