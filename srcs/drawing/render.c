@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 13:24:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/27 00:38:17 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/02/04 20:56:19 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,35 +53,42 @@ static void	rotate_camera(t_camera *cam, int keycode)
 
 	world_up = (t_vec3){0.0, 1.0, 0.0};
 	if (keycode == KEY_LEFT)
-		cam->orientation = rotate_around_axis(cam->orientation, world_up, ROT_SPEED);
+		cam->orientation = rotate_around_axis(cam->orientation,
+				world_up, ROT_SPEED);
 	else if (keycode == KEY_RIGHT)
-		cam->orientation = rotate_around_axis(cam->orientation, world_up, -ROT_SPEED);
+		cam->orientation = rotate_around_axis(cam->orientation,
+				world_up, -ROT_SPEED);
 	else if (keycode == KEY_UP)
-		cam->orientation = rotate_around_axis(cam->orientation, cam->right, ROT_SPEED);
+		cam->orientation = rotate_around_axis(cam->orientation,
+				cam->right, ROT_SPEED);
 	else if (keycode == KEY_DOWN)
-		cam->orientation = rotate_around_axis(cam->orientation, cam->right, -ROT_SPEED);
+		cam->orientation = rotate_around_axis(cam->orientation,
+				cam->right, -ROT_SPEED);
 	cam->orientation = vec_normalize(cam->orientation);
 }
 
 static int	handle_keypress(int keycode, t_window *win)
 {
+	t_scene	*scene;
+
+	scene = win->scene;
 	if (keycode == KEY_ESC)
 		mlx_loop_end(win->mlx);
 	else if (keycode == KEY_SPACE)
-		win->scene->state.camera_idx = (win->scene->state.camera_idx + 1)
+		scene->state.camera_idx = (win->scene->state.camera_idx + 1)
 			% win->scene->camera.size;
 	else if (keycode == KEY_S)
-		win->scene->chosen_cam->position = vec_sub(win->scene->chosen_cam->position,
-			vec_scale(win->scene->chosen_cam->forward, MOVE_SPEED));
+		scene->chosen_cam->position = vec_sub(win->scene->chosen_cam->position,
+				vec_scale(win->scene->chosen_cam->forward, MOVE_SPEED));
 	else if (keycode == KEY_A)
-		win->scene->chosen_cam->position = vec_sub(win->scene->chosen_cam->position,
-			vec_scale(win->scene->chosen_cam->right, MOVE_SPEED));
+		scene->chosen_cam->position = vec_sub(win->scene->chosen_cam->position,
+				vec_scale(win->scene->chosen_cam->right, MOVE_SPEED));
 	else if (keycode == KEY_W)
-		win->scene->chosen_cam->position = vec_add(win->scene->chosen_cam->position,
-			vec_scale(win->scene->chosen_cam->forward, MOVE_SPEED));
+		scene->chosen_cam->position = vec_add(win->scene->chosen_cam->position,
+				vec_scale(win->scene->chosen_cam->forward, MOVE_SPEED));
 	else if (keycode == KEY_D)
-		win->scene->chosen_cam->position = vec_add(win->scene->chosen_cam->position,
-			vec_scale(win->scene->chosen_cam->right, MOVE_SPEED));
+		scene->chosen_cam->position = vec_add(win->scene->chosen_cam->position,
+				vec_scale(win->scene->chosen_cam->right, MOVE_SPEED));
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT
 		|| keycode == KEY_UP || keycode == KEY_DOWN)
 		rotate_camera(win->scene->chosen_cam, keycode);

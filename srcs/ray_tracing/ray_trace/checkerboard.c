@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 00:16:30 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/25 01:41:02 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/04 21:06:01 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	spherical_checker(const t_vec3 n)
 
 	u = 0.5 + atan2(n.z, n.x) / (2.0 * M_PI);
 	v = 0.5 - asin(n.y) / M_PI;
-
 	iu = (int)floor(u * CHECKERBOARD_SCALE * 2.2);
 	iv = (int)floor(v * CHECKERBOARD_SCALE * 1.5);
 	return ((iu + iv) & 1);
@@ -84,18 +83,7 @@ static int	get_cylinder_checker(const t_hit *hit)
 	return (iu_iv & 1);
 }
 
-
-/* ************************************************************************** */
-/*                          FUNCTION POINTER TABLE                            */
-/* ************************************************************************** */
-
 typedef int	(*t_checker_func)(const t_hit *);
-
-
-
-/* ************************************************************************** */
-/*                          MAIN DISPATCHER                                   */
-/* ************************************************************************** */
 
 int	get_checker_pattern(const t_hit *hit)
 {

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:07:47 by mansargs          #+#    #+#             */
-/*   Updated: 2026/02/04 19:11:16 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/04 20:58:20 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ static int	parse_opt_texture(char *attr, t_material *m)
 		return (parse_texture_core(&m->bump_map_path, attr), 1);
 	return (print_error("Too many textures"), -1);
 }
-
-#include <stdio.h>
 
 bool	parse_optional_data(char **a, t_material *m, size_t len)
 {

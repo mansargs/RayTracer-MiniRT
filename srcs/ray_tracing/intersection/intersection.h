@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 17:28:52 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/27 00:25:54 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/02/04 21:04:27 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "ray.h"
 # include "minirt.h"
 
-#define NUM_THREADS 8
+# define NUM_THREADS 8
 
 typedef struct s_thread_data
 {

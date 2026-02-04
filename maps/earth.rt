@@ -9,5 +9,5 @@ L -15,12,10 0.7 255,255,255
 
 A   0.6     255,255,255
 
-sp  0,0,0         6   0,0,255 maps/textures/earth.xpm
+sp  0,0,0         6   0,0,255 0.6 200 maps/textures/earth.xpm
 

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:38:41 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/25 01:14:14 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/04 20:49:41 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 # include "window.h"
 
 typedef struct s_hit	t_hit;
-
-typedef void	(*t_checkerboard_fn)(void *, bool);
+typedef void			(*t_checkerboard_fn)(void *, bool);
 
 typedef struct s_ray
 {

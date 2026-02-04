@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/02/04 17:04:32 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/04 20:48:49 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,14 +140,14 @@ typedef struct s_cone
 	t_material	mat;
 }	t_cone;
 
-	typedef enum e_object
-	{
-		NO_OBJECT = 0,
-		SPHERE,
-		PLANE,
-		CONE,
-		CYLINDER
-	}			t_object;
+typedef enum e_object
+{
+	NO_OBJECT = 0,
+	SPHERE,
+	PLANE,
+	CONE,
+	CYLINDER
+}			t_object;
 
 typedef struct s_state
 {
