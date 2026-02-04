@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:27:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/02/04 16:51:37 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:58:55 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,16 @@ int	main(int argc, char *argv[])
 	if (!init_scene(&scene))
 		return (EXIT_FAILURE);
 	if (!parse_file(argv[1], &scene))
-		return (free_scene(&window.mlx, &scene), EXIT_FAILURE);
+	{
+		free_scene(window.mlx, &scene);
+		return (EXIT_FAILURE);
+	}
 	init_window_params(&window, &scene);
 	load_scene(window.mlx, &scene);
 	generate_rays(&scene, &window);
 	render_image(&window);
 	start_loop(&window);
-	free_scene(&window.mlx, &scene);
+	free_scene(window.mlx, &scene);
 	cleanup_window(&window);
 	return (EXIT_SUCCESS);
 }

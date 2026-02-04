@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 18:18:24 by mansargs          #+#    #+#             */
-/*   Updated: 2026/02/04 17:01:12 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:58:14 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,25 @@ bool	init_scene(t_scene *scene)
 void	init_default_material(t_material *mat)
 {
 	mat->bump_map_path = NULL;
-	mat->color_tex.img = NULL;
-	mat->bump_tex.img = NULL;
-	mat->mlx = 
 	mat->texture_path = NULL;
+	mat->color_tex.img = NULL;
+	mat->color_tex.addr = NULL;
+	mat->color_tex.width = 0;
+	mat->color_tex.height = 0;
+	mat->color_tex.bpp = 0;
+	mat->color_tex.line_len = 0;
+	mat->color_tex.endian = 0;
+	mat->color_tex.loaded = false;
+	mat->bump_tex.img = NULL;
+	mat->bump_tex.addr = NULL;
+	mat->bump_tex.width = 0;
+	mat->bump_tex.height = 0;
+	mat->bump_tex.bpp = 0;
+	mat->bump_tex.line_len = 0;
+	mat->bump_tex.endian = 0;
+	mat->bump_tex.loaded = false;
+	mat->mlx = NULL;
 	mat->has_specular = false;
 	mat->spec.k_s = -1.0;
-	mat->spec.n_s = -1.0;
+	mat->spec.n_s = -1;
 }
