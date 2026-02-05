@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:47:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/27 01:33:42 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/02/06 03:15:14 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void		cleanup_window(t_window *win);
 int			init_window_params(t_window *win, t_scene *scene);
 void		put_pixel(t_window *win, int x, int y, int color);
 void		render_image(t_window *win);
+int			render_loop(t_window *win);
+void		rotate_camera(t_camera *cam, int keycode);
 void		start_loop(t_window *win);
 t_camera	*chose_camera(t_scene *scene);
 

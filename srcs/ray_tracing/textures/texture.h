@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:00:11 by noavetis          #+#    #+#             */
-/*   Updated: 2026/01/27 15:12:14 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/02/06 02:45:33 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 
 # define BUMP_STRENGTH 2.0
 
+typedef void	(*t_checkerboard_fn)(void *, bool);
+typedef int		(*t_checker_func)(const t_hit *);
+
 typedef struct s_uv
 {
 	double	u;
 	double	v;
 }	t_uv;
-
 
 bool		load_texture(void *mlx, const char *path, t_loaded_tex *tex);
 void		free_texture(void *mlx, t_loaded_tex *tex);

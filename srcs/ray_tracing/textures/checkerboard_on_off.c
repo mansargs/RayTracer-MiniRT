@@ -6,11 +6,12 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 15:33:10 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/25 01:26:08 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/06 02:47:37 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
+#include "texture.h"
 #include "intersection.h"
 #include <stdio.h>
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bump.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 01:43:06 by noavetis          #+#    #+#             */
-/*   Updated: 2026/01/27 15:09:14 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/02/06 02:10:48 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,18 @@ static t_vec3	get_tangent(t_vec3 normal)
 
 static void	gradient(t_loaded_tex *bump, t_uv uv, double *dx, double *dy)
 {
-	int		x;
-	int		y;
+	int		xy[2];
 	double	h_l;
 	double	h_r;
 	double	h_u;
 	double	h_d;
 
-	x = (int)(uv.u * bump->width);
-	y = (int)(uv.v * bump->height);
-	h_l = color_to_height(get_texture_pixel(bump, x - 1, y));
-	h_r = color_to_height(get_texture_pixel(bump, x + 1, y));
-	h_u = color_to_height(get_texture_pixel(bump, x, y - 1));
-	h_d = color_to_height(get_texture_pixel(bump, x, y + 1));
+	xy[0] = (int)(uv.u * bump->width);
+	xy[1] = (int)(uv.v * bump->height);
+	h_l = color_to_height(get_texture_pixel(bump, xy[0] - 1, xy[1]));
+	h_r = color_to_height(get_texture_pixel(bump, xy[0] + 1, xy[1]));
+	h_u = color_to_height(get_texture_pixel(bump, xy[0], xy[1] - 1));
+	h_d = color_to_height(get_texture_pixel(bump, xy[0], xy[1] + 1));
 	*dx = (h_r - h_l) * BUMP_STRENGTH;
 	*dy = (h_d - h_u) * BUMP_STRENGTH;
 }

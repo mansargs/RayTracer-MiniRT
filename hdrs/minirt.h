@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/02/04 20:48:49 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/06 03:05:20 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ typedef enum e_object
 
 typedef struct s_state
 {
-	int	camera_idx;
+	int		camera_idx;
 }	t_state;
 
 typedef struct s_scene

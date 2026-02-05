@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 01:37:59 by noavetis          #+#    #+#             */
-/*   Updated: 2026/01/27 15:04:42 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/02/06 02:06:14 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "libft.h"
 #include <math.h>
 #include <unistd.h>
-
 
 bool	load_texture(void *mlx, const char *path, t_loaded_tex *tex)
 {

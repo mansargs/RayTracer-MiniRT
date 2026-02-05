@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 01:23:42 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/25 01:27:44 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/06 02:32:12 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,30 +43,16 @@ int	rgb_to_int(int r, int g, int b)
 	return ((r << 16) | (g << 8) | b);
 }
 
-t_rgb	compute_final_color(const t_hit *hit, const t_scene *scene)
+static t_rgb	compute_lighting(const t_hit *hit, const t_scene *scene)
 {
-	t_rgb			final;
+	size_t			i;
 	const t_light	*light;
 	t_rgb			diffuse;
 	t_rgb			specular;
-	size_t			i;
-	int				checker;
-	bool			has_checkerboard;
+	t_rgb			result;
 
-	final = compute_ambient(hit, &scene->ambient);
+	result = (t_rgb){0, 0, 0};
 	i = 0;
-	has_checkerboard = false;
-	if (hit->object)
-	{
-		if (hit->type == SPHERE && ((t_sphere *)hit->object)->checkerboard)
-			has_checkerboard = true;
-		else if (hit->type == PLANE && ((t_plane *)hit->object)->checkerboard)
-			has_checkerboard = true;
-		else if (hit->type == CYLINDER && ((t_cylinder *)hit->object)->checkerboard)
-			has_checkerboard = true;
-		else if (hit->type == CONE && ((t_cone *)hit->object)->checkerboard)
-			has_checkerboard = true;
-	}
 	while (i < scene->lights.size)
 	{
 		light = vector_get(&scene->lights, i);
@@ -74,19 +60,42 @@ t_rgb	compute_final_color(const t_hit *hit, const t_scene *scene)
 		{
 			diffuse = diffuse_color(light, hit);
 			specular = compute_specular(light, scene->chosen_cam, hit);
-			final = add_colors(final, add_colors(diffuse, specular));
+			result = add_colors(result, add_colors(diffuse, specular));
 		}
 		++i;
 	}
-	if (has_checkerboard)
+	return (result);
+}
+
+static void	apply_checkerboard_if_needed(t_rgb *color, const t_hit *hit)
+{
+	int	checker;
+
+	if (!hit || !hit->object)
+		return ;
+	if (hit->type == SPHERE && !((t_sphere *)hit->object)->checkerboard)
+		return ;
+	if (hit->type == PLANE && !((t_plane *)hit->object)->checkerboard)
+		return ;
+	if (hit->type == CYLINDER && !((t_cylinder *)hit->object)->checkerboard)
+		return ;
+	if (hit->type == CONE && !((t_cone *)hit->object)->checkerboard)
+		return ;
+	checker = get_checker_pattern(hit);
+	if (checker)
 	{
-		checker = get_checker_pattern(hit);
-		if (checker)
-		{
-			final.r = (final.r * 0.3);
-			final.g = (final.g * 0.3);
-			final.b = (final.b * 0.3);
-		}
+		color->r *= 0.3;
+		color->g *= 0.3;
+		color->b *= 0.3;
 	}
+}
+
+t_rgb	compute_final_color(const t_hit *hit, const t_scene *scene)
+{
+	t_rgb	final;
+
+	final = compute_ambient(hit, &scene->ambient);
+	final = add_colors(final, compute_lighting(hit, scene));
+	apply_checkerboard_if_needed(&final, hit);
 	return (final);
 }

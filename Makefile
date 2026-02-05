@@ -79,7 +79,6 @@ SRCS = \
 	$(VEC_MATHS)/vec_normalized.c \
 	$(RAY_TRACING)/ray_trace/ray_generation.c \
 	$(RAY_TRACING)/ray_trace/ray_trace.c \
-	$(RAY_TRACING)/ray_trace/checkerboard.c \
 	$(RAY_TRACING)/intersection/intersection.c \
 	$(RAY_TRACING)/intersection/intersection_spheres.c \
 	$(RAY_TRACING)/intersection/intersection_cylinders.c \
@@ -96,10 +95,12 @@ SRCS = \
 	$(RAY_TRACING)/textures/loader.c \
 	$(RAY_TRACING)/textures/uv_mapping.c \
 	$(RAY_TRACING)/textures/bump.c \
+	$(RAY_TRACING)/textures/checkerboard.c \
+	$(RAY_TRACING)/textures/checkerboard_on_off.c \
 	$(RAY_TRACING)/textures/normal.c \
 	$(RAY_TRACING)/textures/texture_color.c \
 	$(RAY_TRACING)/textures/load_scene.c \
-	$(DRAWING)/window.c $(DRAWING)/render.c $(DRAWING)/checkerboard_on_off.c
+	$(DRAWING)/window.c $(DRAWING)/render.c $(DRAWING)/events.c
 
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
