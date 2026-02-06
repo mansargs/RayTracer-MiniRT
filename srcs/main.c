@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:27:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/02/04 19:12:27 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/06 22:59:09 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char *argv[])
 		cleanup_window(&window);
 		return (EXIT_FAILURE);
 	}
-	load_scene(window.mlx, &scene);
+	load_scene(&scene);
 	generate_rays(&scene, &window);
 	render_image(&window);
 	start_loop(&window);

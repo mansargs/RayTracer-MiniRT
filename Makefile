@@ -100,7 +100,7 @@ SRCS = \
 	$(RAY_TRACING)/textures/normal.c \
 	$(RAY_TRACING)/textures/texture_color.c \
 	$(RAY_TRACING)/textures/load_scene.c \
-	$(DRAWING)/window.c $(DRAWING)/render.c $(DRAWING)/events.c
+	$(DRAWING)/window.c $(DRAWING)/render.c $(DRAWING)/events.c $(DRAWING)/deactivate_checkerboard.c
 
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

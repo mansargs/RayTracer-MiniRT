@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 01:23:42 by mansargs          #+#    #+#             */
-/*   Updated: 2026/02/06 02:32:12 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/06 23:01:04 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static t_rgb	compute_lighting(const t_hit *hit, const t_scene *scene)
 		light = vector_get(&scene->lights, i);
 		if (!is_in_shadow(hit->point, light->position, scene))
 		{
-			diffuse = diffuse_color(light, hit);
+			diffuse = diffuse_color(light, hit, scene);
 			specular = compute_specular(light, scene->chosen_cam, hit);
 			result = add_colors(result, add_colors(diffuse, specular));
 		}
@@ -94,7 +94,7 @@ t_rgb	compute_final_color(const t_hit *hit, const t_scene *scene)
 {
 	t_rgb	final;
 
-	final = compute_ambient(hit, &scene->ambient);
+	final = compute_ambient(hit, &scene->ambient, scene);
 	final = add_colors(final, compute_lighting(hit, scene));
 	apply_checkerboard_if_needed(&final, hit);
 	return (final);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 01:40:54 by noavetis          #+#    #+#             */
-/*   Updated: 2026/01/27 15:12:25 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/02/06 23:01:01 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static t_rgb	sample_texture(t_loaded_tex *tex, t_uv uv)
 	return (rgb);
 }
 
-t_rgb	get_tex_color(const t_hit *hit)
+t_rgb	get_tex_color(const t_hit *hit, const t_scene *scene)
 {
 	t_loaded_tex	*tex;
 	t_uv			uv;
@@ -72,6 +72,8 @@ t_rgb	get_tex_color(const t_hit *hit)
 	none.g = -1;
 	none.b = -1;
 	tex = get_color_tex(hit);
+	if (!scene || !scene->state.texture_on)
+		return (none);
 	if (!tex || !tex->loaded)
 		return (none);
 	uv = get_uv_for_hit(hit);

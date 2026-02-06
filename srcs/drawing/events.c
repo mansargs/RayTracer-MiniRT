@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 03:08:38 by mansargs          #+#    #+#             */
-/*   Updated: 2026/02/06 03:10:22 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/07 00:02:19 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,33 @@
 #include "vec_math.h"
 #include "intersection.h"
 #include "ray.h"
+
+static void	handle_textures_keypress(int keycode, t_window *win)
+{
+	t_scene	*scene;
+
+	scene = win->scene;
+	if (keycode == KEY_R)
+	{
+		scene->state.texture_on = false;
+		scene->state.bump_on = false;
+		scene->state.checker_on = true;
+	}
+	else if (keycode == KEY_T)
+	{
+		scene->state.texture_on = true;
+		scene->state.bump_on = false;
+		scene->state.checker_on = false;
+		deactivate_checkerboard(win->scene);
+	}
+	else if (keycode == KEY_B && win->scene->state.loaded_bump)
+	{
+		scene->state.texture_on = false;
+		scene->state.bump_on = true;
+		scene->state.checker_on = false;
+		deactivate_checkerboard(win->scene);
+	}
+}
 
 static int	handle_keypress(int keycode, t_window *win)
 {
@@ -40,6 +67,7 @@ static int	handle_keypress(int keycode, t_window *win)
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT
 		|| keycode == KEY_UP || keycode == KEY_DOWN)
 		rotate_camera(scene->chosen_cam, keycode);
+	handle_textures_keypress(keycode, win);
 	return (0);
 }
 
@@ -55,6 +83,8 @@ static int	mouse_handler(int button, int x, int y, void *param)
 	t_hit		nearest;
 
 	win = (t_window *)param;
+	if (!win->scene->state.checker_on)
+		return (0);
 	nearest = trace_pixel(win->scene, win, (t_iter){x, y});
 	if (nearest.is_hit)
 		checkerboard_on_off(&nearest, button);

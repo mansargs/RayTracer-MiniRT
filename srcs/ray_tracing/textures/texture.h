@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:00:11 by noavetis          #+#    #+#             */
-/*   Updated: 2026/02/06 02:45:33 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/06 22:57:32 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ t_uv		get_uv_cylinder(const t_hit *hit, const t_cylinder *cy);
 t_uv		get_uv_cone(const t_hit *hit, const t_cone *co);
 
 t_vec3		bump_map(const t_hit *hit, t_loaded_tex *bump, t_uv uv);
-t_vec3		get_normal(const t_hit *hit);
-t_rgb		get_tex_color(const t_hit *hit);
-void		load_scene(void *mlx, t_scene *scene);
+t_vec3		get_normal(const t_hit *hit, const t_scene *scene);
+t_rgb		get_tex_color(const t_hit *hit, const t_scene *scene);
+void		load_scene(t_scene *scene);
 
 #endif

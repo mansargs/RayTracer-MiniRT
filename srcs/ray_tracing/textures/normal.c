@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 01:43:01 by noavetis          #+#    #+#             */
-/*   Updated: 2026/01/27 15:09:36 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/02/06 23:01:01 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ static t_loaded_tex	*get_bump_tex(const t_hit *hit)
 	return (NULL);
 }
 
-t_vec3	get_normal(const t_hit *hit)
+t_vec3	get_normal(const t_hit *hit, const t_scene *scene)
 {
 	t_loaded_tex	*bump;
 	t_uv			uv;
 
 	bump = get_bump_tex(hit);
+	if (!scene || !scene->state.bump_on)
+		return (hit->normal);
 	if (!bump || !bump->loaded)
 		return (hit->normal);
 	uv = get_uv_for_hit(hit);

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 01:42:03 by noavetis          #+#    #+#             */
-/*   Updated: 2026/02/06 02:20:31 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/06 22:56:56 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 #include "vector.h"
 #include <stddef.h>
 
-static void	load_material_textures(void *mlx, t_material *mat)
+static void	load_material_textures(void *mlx, t_material *mat, t_state *state)
 {
 	if (mat->texture_path)
 		load_texture(mlx, mat->texture_path, &mat->color_tex);
 	if (mat->bump_map_path)
-		load_texture(mlx, mat->bump_map_path, &mat->bump_tex);
+	{
+		if (load_texture(mlx, mat->bump_map_path, &mat->bump_tex))
+			state->loaded_bump = true;
+	}
 }
 
 static void	load_materials_from_vector(void *mlx, t_vector *vec,
-		size_t mat_offset)
+		size_t mat_offset, t_state *state)
 {
 	size_t		i;
 	void		*obj;
@@ -34,18 +37,21 @@ static void	load_materials_from_vector(void *mlx, t_vector *vec,
 	{
 		obj = vector_get(vec, i++);
 		mat = (t_material *)((char *)obj + mat_offset);
-		load_material_textures(mlx, mat);
+		load_material_textures(mlx, mat, state);
 	}
 }
 
-void	load_scene(void *mlx, t_scene *scene)
+void	load_scene(t_scene *scene)
 {
+	void	*mlx;
+
+	mlx = scene->win->mlx;
 	load_materials_from_vector(mlx, &scene->spheres,
-		offsetof(t_sphere, mat));
+		offsetof(t_sphere, mat), &scene->state);
 	load_materials_from_vector(mlx, &scene->planes,
-		offsetof(t_plane, mat));
+		offsetof(t_plane, mat), &scene->state);
 	load_materials_from_vector(mlx, &scene->cylinders,
-		offsetof(t_cylinder, mat));
+		offsetof(t_cylinder, mat), &scene->state);
 	load_materials_from_vector(mlx, &scene->cones,
-		offsetof(t_cone, mat));
+		offsetof(t_cone, mat), &scene->state);
 }

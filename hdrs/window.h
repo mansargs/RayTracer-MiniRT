@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:47:50 by mansargs          #+#    #+#             */
-/*   Updated: 2026/02/06 03:15:14 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/07 00:01:46 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@
 # define KEY_UP 65362
 # define KEY_RIGHT 65363
 # define KEY_DOWN 65364
+# define KEY_R 114
+# define KEY_T 116
+# define KEY_B 98
 # define MOUSE_LEFT   1
 # define MOUSE_RIGHT  3
 # define CHECKERBOARD_SCALE 10
@@ -61,6 +64,7 @@ int			init_window_params(t_window *win, t_scene *scene);
 void		put_pixel(t_window *win, int x, int y, int color);
 void		render_image(t_window *win);
 int			render_loop(t_window *win);
+void		deactivate_checkerboard(t_scene *scene);
 void		rotate_camera(t_camera *cam, int keycode);
 void		start_loop(t_window *win);
 t_camera	*chose_camera(t_scene *scene);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   surface_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noavetis <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:31:42 by mansargs          #+#    #+#             */
-/*   Updated: 2026/01/27 15:11:48 by noavetis         ###   ########.fr       */
+/*   Updated: 2026/02/06 23:01:02 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static t_rgb	cone_color(void *obj)
 	return (((t_cone *)obj)->color);
 }
 
-t_rgb	find_surface_color(const t_hit *hit)
+t_rgb	find_surface_color(const t_hit *hit, const t_scene *scene)
 {
 	static const t_get_color_fn	table[] = {
 	[SPHERE] = sphere_color,
@@ -47,7 +47,7 @@ t_rgb	find_surface_color(const t_hit *hit)
 
 	if (!hit || !hit->is_hit || !hit->object)
 		return ((t_rgb){0.0, 0.0, 0.0});
-	tex_color = get_tex_color(hit);
+	tex_color = get_tex_color(hit, scene);
 	if (tex_color.r >= 0)
 		return (tex_color);
 	if (hit->type >= 1 && hit->type < (int)(sizeof(table) / sizeof(table[0])))
