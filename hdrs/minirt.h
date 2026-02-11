@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:36:01 by mansargs          #+#    #+#             */
-/*   Updated: 2026/02/06 22:52:51 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/09 20:43:26 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ typedef struct s_state
 	bool	texture_on;
 	bool	bump_on;
 	bool	loaded_bump;
+	bool	loaded_tex;
 }	t_state;
 
 typedef struct s_scene

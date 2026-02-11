@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 01:42:03 by noavetis          #+#    #+#             */
-/*   Updated: 2026/02/06 22:56:56 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/09 20:46:47 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 static void	load_material_textures(void *mlx, t_material *mat, t_state *state)
 {
 	if (mat->texture_path)
-		load_texture(mlx, mat->texture_path, &mat->color_tex);
+	{
+		if (load_texture(mlx, mat->texture_path, &mat->color_tex))
+			state->loaded_tex = true;
+	}
 	if (mat->bump_map_path)
 	{
 		if (load_texture(mlx, mat->bump_map_path, &mat->bump_tex))

@@ -6,7 +6,7 @@
 /*   By: mansargs <mansargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 03:08:38 by mansargs          #+#    #+#             */
-/*   Updated: 2026/02/07 00:02:19 by mansargs         ###   ########.fr       */
+/*   Updated: 2026/02/09 20:48:05 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ static void	handle_textures_keypress(int keycode, t_window *win)
 		scene->state.texture_on = false;
 		scene->state.bump_on = false;
 		scene->state.checker_on = true;
+		deactivate_checkerboard(win->scene);
 	}
-	else if (keycode == KEY_T)
+	else if (keycode == KEY_T && win->scene->state.loaded_tex)
 	{
 		scene->state.texture_on = true;
 		scene->state.bump_on = false;
