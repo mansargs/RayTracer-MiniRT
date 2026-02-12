@@ -42,7 +42,7 @@ Example:
 - Clone the repository:
 
 ```
-git clone <repo-url> miniRT
+git clone --recurse-submodules https://github.com/mansargs/RayTracer-MiniRT.git miniRT
 cd miniRT
 ```
 
